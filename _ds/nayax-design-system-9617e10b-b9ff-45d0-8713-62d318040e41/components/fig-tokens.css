@@ -1,0 +1,159 @@
+/* Generated from Figma Variables. First mode = :root default.
+   FLOAT tokens are unitless — multiply by 1px in calc() where a length is needed. */
+
+:root {
+  --0-25rem: 4; /* @kind spacing */
+  --0-5rem-2: 8; /* @kind spacing */
+  --0-5rem: 8; /* @kind spacing */
+  --0-75rem-2: 12; /* @kind spacing */
+  --0-75rem: 12; /* @kind spacing */
+  --action-highlight-default-2: var(--yellow-70-2); /* @kind color */
+  --action-highlight-default: var(--yellow-70); /* @kind color */
+  --action-highlight-focused-2: var(--yellow-50-2); /* @kind color */
+  --action-highlight-focused: var(--yellow-50); /* @kind color */
+  --action-highlight-hover-2: var(--yellow-60-2); /* @kind color */
+  --action-highlight-hover: var(--yellow-60); /* @kind color */
+  --action-inverted-default-2: var(--stroke-action-default); /* @kind color */
+  --action-inverted-default: var(--stroke-action-default); /* @kind color */
+  --action-primary-default-2: var(--neutrals-20-2); /* @kind color */
+  --action-primary-default: var(--neutrals-20); /* @kind color */
+  --action-primary-focused-2: var(--neutrals-10-2); /* @kind color */
+  --action-primary-focused: var(--neutrals-10); /* @kind color */
+  --action-primary-hover-2: var(--neutrals-10-2); /* @kind color */
+  --action-primary-hover: var(--neutrals-10); /* @kind color */
+  --background-default: var(--neutrals-90); /* @kind color */
+  --background-subdued: var(--neutrals-80); /* @kind color */
+  --disabled-2: 60; /* @kind other */
+  --disabled: 60; /* @kind other */
+  --divider-default-2: var(--neutrals-70-2); /* @kind color */
+  --divider-default: var(--neutrals-70); /* @kind color */
+  --divider-subdued-2: var(--neutrals-60-2); /* @kind color */
+  --divider-subdued: var(--neutrals-60); /* @kind color */
+  --family-body-2: "Hurme Geometric Sans 3"; /* @kind font */
+  --family-body: "Hurme Geometric Sans 3"; /* @kind font */
+  --family-display-2: "Hurme Geometric Sans 3"; /* @kind font */
+  --family-display-3: "Hurme Geometric Sans 3"; /* @kind font */
+  --family-display: "Hurme Geometric Sans 3"; /* @kind font */
+  --green-20: rgb(26,127,100); /* @kind color */
+  --green-30: rgb(36,179,141); /* @kind color */
+  --green-50: rgb(83,210,177); /* @kind color */
+  --green-80: rgb(212,244,235); /* @kind color */
+  --icon-base-default-2: var(--neutrals-20-2); /* @kind color */
+  --icon-base-default: var(--neutrals-20); /* @kind color */
+  --icon-base-highlight-2: var(--action-highlight-focused); /* @kind color */
+  --icon-base-highlight: var(--action-highlight-focused); /* @kind color */
+  --icon-base-subdued-2: var(--neutrals-40-2); /* @kind color */
+  --icon-base-subdued: var(--neutrals-40); /* @kind color */
+  --icon-base: var(--neutrals-light-10); /* @kind color */
+  --icon-inverted-default-2: var(--neutrals-90-2); /* @kind color */
+  --icon-inverted-default: var(--neutrals-90); /* @kind color */
+  --icon-inverted-subdued-2: var(--neutrals-70-2); /* @kind color */
+  --icon-inverted-subdued: var(--neutrals-70); /* @kind color */
+  --md: 10; /* @kind spacing */
+  --neutrals-10-2: rgb(13,13,13); /* @kind color */
+  --neutrals-10: rgb(13,13,13); /* @kind color */
+  --neutrals-20-2: rgb(38,38,38); /* @kind color */
+  --neutrals-20: rgb(38,38,38); /* @kind color */
+  --neutrals-30-2: rgb(91,91,93); /* @kind color */
+  --neutrals-30: rgb(91,91,93); /* @kind color */
+  --neutrals-40-2: rgb(115,115,115); /* @kind color */
+  --neutrals-40: rgb(115,115,115); /* @kind color */
+  --neutrals-60-2: rgb(168,168,168); /* @kind color */
+  --neutrals-60: rgb(168,168,168); /* @kind color */
+  --neutrals-70-2: rgb(217,217,217); /* @kind color */
+  --neutrals-70: rgb(217,217,217); /* @kind color */
+  --neutrals-80: rgb(247,247,247); /* @kind color */
+  --neutrals-90-2: rgb(255,255,255); /* @kind color */
+  --neutrals-90: rgb(255,255,255); /* @kind color */
+  --neutrals-dark-10: rgb(225,226,230); /* @kind color */
+  --neutrals-dark-95: rgb(10,10,13); /* @kind color */
+  --neutrals-light-100: rgb(255,255,255); /* @kind color */
+  --neutrals-light-10: rgb(25,21,26); /* @kind color */
+  --purple-0: rgb(109,91,247); /* @kind color */
+  --purple-2: rgb(226,222,253); /* @kind color */
+  --purple-3: rgb(240,239,254); /* @kind color */
+  --red-30-2: rgb(204,43,66); /* @kind color */
+  --red-30: rgb(204,43,66); /* @kind color */
+  --red-50: rgb(255,92,108); /* @kind color */
+  --red-60: rgb(255,143,154); /* @kind color */
+  --red-80: rgb(255,225,229); /* @kind color */
+  --round-2: 10000000;
+  --round: 10000000;
+  --size-00-2: 11;
+  --size-00: 11;
+  --size-01-2: 13;
+  --size-01: 14;
+  --size-02-2: 16;
+  --size-02: 15;
+  --size-03-2: 17;
+  --size-03: 18;
+  --size-05: 24;
+  --size-06-2: 32;
+  --size-06: 22;
+  --size-08: 56;
+  --size-09: 72;
+  --size-10-2: 40;
+  --size-10: 88;
+  --stroke-action-default-2: var(--neutrals-20-2); /* @kind color */
+  --stroke-action-default: var(--neutrals-20); /* @kind color */
+  --stroke-action-focused-2: var(--neutrals-10-2); /* @kind color */
+  --stroke-action-focused: var(--neutrals-10); /* @kind color */
+  --stroke-action-hover-2: var(--neutrals-10-2); /* @kind color */
+  --stroke-action-hover: var(--neutrals-10); /* @kind color */
+  --stroke-action-inverted: var(--neutrals-90); /* @kind color */
+  --stroke-base-default-2: var(--action-primary-default); /* @kind color */
+  --stroke-base-default: var(--action-primary-default); /* @kind color */
+  --stroke-base-enabled: var(--action-primary-default); /* @kind color */
+  --stroke-base-focused-2: var(--action-highlight-focused); /* @kind color */
+  --stroke-base-focused: var(--action-highlight-focused); /* @kind color */
+  --stroke-base: var(--neutrals-light-10); /* @kind color */
+  --stroke-error-default-2: var(--red-30-2); /* @kind color */
+  --stroke-error-default: var(--red-30); /* @kind color */
+  --stroke-error-inverted: var(--red-50); /* @kind color */
+  --stroke-success-default: var(--green-30); /* @kind color */
+  --surface-base-default-2: var(--neutrals-90-2); /* @kind color */
+  --surface-base-default-3: var(--neutrals-light-100); /* @kind color */
+  --surface-base-default: var(--neutrals-90); /* @kind color */
+  --surface-error-default: var(--red-80); /* @kind color */
+  --surface-highlight-purple-darker: var(--0-75rem); /* @kind color */
+  --surface-highlight-yellow-darker: var(--yellow-80); /* @kind color */
+  --surface-inverted-default: var(--neutrals-20); /* @kind color */
+  --surface-success-default: var(--green-80); /* @kind color */
+  --text-base-default-2: var(--neutrals-20-2); /* @kind color */
+  --text-base-default-3: var(--neutrals-light-10); /* @kind color */
+  --text-base-default: var(--neutrals-20); /* @kind color */
+  --text-base-highlight-2: var(--yellow-50); /* @kind color */
+  --text-base-highlight: var(--yellow-50); /* @kind color */
+  --text-base-subdued-2: var(--neutrals-30-2); /* @kind color */
+  --text-base-subdued: var(--neutrals-30); /* @kind color */
+  --text-error-default: var(--red-30); /* @kind color */
+  --text-error-inverted: var(--red-60); /* @kind color */
+  --text-inverted-default-2: var(--neutrals-90-2); /* @kind color */
+  --text-inverted-default: var(--neutrals-90); /* @kind color */
+  --text-inverted-highlight-2: var(--disabled); /* @kind color */
+  --text-inverted-highlight: var(--disabled); /* @kind color */
+  --text-inverted-subdued: var(--neutrals-60); /* @kind color */
+  --text-success-default: var(--green-20); /* @kind color */
+  --text-success-inverted: var(--green-50); /* @kind color */
+  --weight-bold-2: "SemiBold"; /* @kind other */
+  --weight-bold-3: "Medium"; /* @kind other */
+  --weight-bold: "SemiBold"; /* @kind other */
+  --weight-regular-2: "Regular"; /* @kind other */
+  --weight-regular: "Regular"; /* @kind other */
+  --xs-2: 12; /* @kind spacing */
+  --xs: 1; /* @kind spacing */
+  --yellow-50-2: rgb(255,205,0); /* @kind color */
+  --yellow-50: rgb(255,205,0); /* @kind color */
+  --yellow-60-2: rgb(255,229,0); /* @kind color */
+  --yellow-60: rgb(255,229,0); /* @kind color */
+  --yellow-70-2: rgb(255,251,0); /* @kind color */
+  --yellow-70: rgb(255,251,0); /* @kind color */
+  --yellow-80: rgb(255,254,178); /* @kind color */
+}
+
+:root[data-theme="dark"], .dark {
+  --icon-base: var(--neutrals-dark-10); /* @kind color */
+  --stroke-base: var(--neutrals-dark-10); /* @kind color */
+  --surface-base-default-3: var(--neutrals-dark-95); /* @kind color */
+  --text-base-default-3: var(--neutrals-dark-10); /* @kind color */
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="design_doc_mode" content="canvas">
+  <link rel="stylesheet" href="_ds/nayax-design-system-9617e10b-b9ff-45d0-8713-62d318040e41/colors_and_type.css">
+  <link rel="stylesheet" href="_ds/nayax-design-system-9617e10b-b9ff-45d0-8713-62d318040e41/components/fig-tokens.css">
+  <link rel="stylesheet" href="_ds/nayax-design-system-9617e10b-b9ff-45d0-8713-62d318040e41/components/fig-typography.css">
+  <script src="_ds/nayax-design-system-9617e10b-b9ff-45d0-8713-62d318040e41/_ds_bundle.js"></script>
+  <style>
+    body { background: #EFEEF4; margin: 0; }
+    a { color: #5F4BF5; text-decoration: none; font-weight: 600; }
+    a:hover { text-decoration: underline; }
+  </style>
+</helmet>
+
+<section style="padding:52px 52px 80px;display:flex;flex-direction:column;gap:34px;font-family:var(--font-sans);color:#19151A">
+
+  <div style="display:flex;flex-direction:column;gap:12px;max-width:860px">
+    <div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5B5B5D">Turn 2 · Alternatives</div>
+    <div style="font-size:38px;line-height:44px;font-weight:700;letter-spacing:-0.02em">Three takes on the same wallet</div>
+    <div style="font-size:16px;line-height:24px;color:#404040;max-width:700px;text-wrap:pretty">Same content and the same partner-cashback engine — different answers to “what is this app for the first two seconds after it opens”. All three are tappable at 390 × 844. <a href="#2a">2a</a> is the design we've been refining; <a href="#2b">2b</a> and <a href="#2c">2c</a> are new directions.</div>
+  </div>
+
+  <div style="display:flex;gap:30px;flex-wrap:wrap;align-items:flex-start">
+
+    <div id="2a" style="display:flex;flex-direction:column;gap:14px;width:420px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="background:#19151A;color:#FFCD00;font-size:13px;font-weight:700;padding:5px 11px;border-radius:999px">2a</div>
+        <div style="font-size:19px;font-weight:700;letter-spacing:-0.01em">Card-first (current)</div>
+      </div>
+      <div style="font-size:14px;line-height:21px;color:#404040;min-height:106px;text-wrap:pretty">The card is the hero; a single rotating stat line under it carries cashback, savings and miles. Two tabs split suggestions from proximity, a floating + owns add-to-wallet and ⋮ owns transactions.<br><b>Strength:</b> feels like a wallet first, marketplace second.<br><b>Risk:</b> discovery lives below the fold.</div>
+      <x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" width="390" height="844" hint-size="390px,844px">
+        <dc-import name="WalletPhone" mode="A" style="height:100%" hint-size="100%,844px"></dc-import>
+      </x-import>
+    </div>
+
+    <div id="2b" style="display:flex;flex-direction:column;gap:14px;width:420px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="background:#19151A;color:#FFCD00;font-size:13px;font-weight:700;padding:5px 11px;border-radius:999px">2b</div>
+        <div style="font-size:19px;font-weight:700;letter-spacing:-0.01em">Dark vault</div>
+      </div>
+      <div style="font-size:14px;line-height:21px;color:#404040;min-height:106px;text-wrap:pretty">Near-black surface, yellow reserved for money and offers. Earnings are the headline above the card; brands are quiet dark rows with the rate as the only bright thing. Everything opens as a bottom sheet — no page changes.<br><b>Strength:</b> premium, and cashback reads instantly.<br><b>Risk:</b> a dark payments app is a bigger brand commitment.</div>
+      <x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" width="390" height="844" hint-size="390px,844px">
+        <dc-import name="WalletAltVault" hint-size="100%,844px"></dc-import>
+      </x-import>
+    </div>
+
+    <div id="2c" style="display:flex;flex-direction:column;gap:14px;width:420px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="background:#19151A;color:#FFCD00;font-size:13px;font-weight:700;padding:5px 11px;border-radius:999px">2c</div>
+        <div style="font-size:19px;font-weight:700;letter-spacing:-0.01em">Pay-first rail</div>
+      </div>
+      <div style="font-size:14px;line-height:21px;color:#404040;min-height:106px;text-wrap:pretty">Opens on the two things people actually do: Tap to pay and Scan, in a yellow action band. Cards shrink to a swipeable rail, the three numbers sit in a row, and the marketplace becomes a filterable list with a real bottom nav.<br><b>Strength:</b> fastest to a payment, most room for partners.<br><b>Risk:</b> denser, and the card art loses its moment.</div>
+      <x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" width="390" height="844" hint-size="390px,844px">
+        <dc-import name="WalletAltRail" hint-size="100%,844px"></dc-import>
+      </x-import>
+    </div>
+
+  </div>
+
+  <div style="background:#fff;border-radius:22px;padding:24px 26px;display:flex;flex-direction:column;gap:12px;max-width:860px;box-shadow:0 2px 4px rgba(0,0,0,.04)">
+    <div style="font-size:17px;font-weight:700;letter-spacing:-0.01em">How to choose</div>
+    <div style="font-size:14px;line-height:21px;color:#404040;text-wrap:pretty">If the wallet's job is to make people feel their Nayax card is worth carrying, take <a href="#2b">2b</a>. If it's to get someone through a terminal in two taps and monetise the partner network, take <a href="#2c">2c</a>. <a href="#2a">2a</a> sits between them and is the safest first release. They also mix: 2c's action band on top of 2a's card, or 2b's sheet-only navigation in any of them.</div>
+  </div>
+
+</section>
+
+</x-dc>
+</body>
+</html>

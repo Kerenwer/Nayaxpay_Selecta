@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/nayax-design-system-9617e10b-b9ff-45d0-8713-62d318040e41/colors_and_type.css">
+  <link rel="stylesheet" href="_ds/nayax-design-system-9617e10b-b9ff-45d0-8713-62d318040e41/components/fig-tokens.css">
+  <link rel="stylesheet" href="_ds/nayax-design-system-9617e10b-b9ff-45d0-8713-62d318040e41/components/fig-typography.css">
+  <script src="_ds/nayax-design-system-9617e10b-b9ff-45d0-8713-62d318040e41/_ds_bundle.js"></script>
+  <style>
+    @keyframes railIn { from { opacity: 0; transform: translate3d(0,10px,0) } to { opacity: 1; transform: none } }
+    @keyframes railSheet { from { transform: translate3d(0,100%,0) } to { transform: none } }
+  </style>
+</helmet>
+<div style="height:100%;display:flex;flex-direction:column;background:#F7F7F7;font-family:var(--font-sans);color:#19151A;position:relative;overflow:hidden">
+
+  <div data-screen-label="Pay-first home" style="flex:1;overflow-y:auto;display:flex;flex-direction:column">
+
+    <div style="background:#FFCD00;padding:14px 18px 20px;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <div style="font-size:15px;font-weight:700;letter-spacing:-0.01em">Nayax Wallet</div>
+        <div onClick="{{ openMenu }}" style="width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer">
+          <svg width="18" height="18" viewBox="0 0 20 20"><circle cx="10" cy="4" r="1.7" fill="#19151A"></circle><circle cx="10" cy="10" r="1.7" fill="#19151A"></circle><circle cx="10" cy="16" r="1.7" fill="#19151A"></circle></svg>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px">
+        <div onClick="{{ openPay }}" style="flex:1;background:#19151A;color:#fff;border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:2px;cursor:pointer">
+          <div style="font-size:15px;font-weight:700">Tap to pay</div>
+          <div style="font-size:12px;color:#A8A8A8">{{ payCardLabel }}</div>
+        </div>
+        <div onClick="{{ openScan }}" style="width:74px;background:rgba(25,21,26,.12);border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer">
+          <div style="width:22px;height:22px;background:#19151A;-webkit-mask:url({{ scanIcon }}) center/contain no-repeat;mask:url({{ scanIcon }}) center/contain no-repeat"></div>
+          <div style="font-size:11px;font-weight:700">Scan</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:16px 18px 6px;display:flex;align-items:center;justify-content:space-between">
+      <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5B5B5D">Cards</div>
+      <div onClick="{{ openMenu }}" style="font-size:13px;font-weight:600;color:#5F4BF5;cursor:pointer">Manage</div>
+    </div>
+    <div style="display:flex;gap:10px;overflow-x:auto;padding:4px 18px 2px">
+      <sc-for list="{{ cards }}" as="c" hint-placeholder-count="3">
+        <div onClick="{{ c.pick }}" style="flex:0 0 auto;width:152px;border-radius:14px;overflow:hidden;border:2px solid {{ c.bd }};background:#fff;cursor:pointer;box-shadow:0 2px 5px rgba(25,21,26,.07)">
+          <img src="{{ c.img }}" alt="{{ c.name }}" style="width:100%;display:block">
+          <div style="padding:8px 10px;display:flex;flex-direction:column;gap:1px">
+            <div style="font-size:12px;font-weight:700">{{ c.name }}</div>
+            <div style="font-size:11px;color:#737373">{{ c.meta }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="display:flex;gap:10px;padding:18px 18px 2px">
+      <div style="flex:1;background:#fff;border-radius:14px;padding:12px 13px;display:flex;flex-direction:column;gap:2px;box-shadow:0 2px 4px rgba(25,21,26,.05)">
+        <div style="font-size:18px;font-weight:700;letter-spacing:-0.01em;color:#19151A">$47.20</div>
+        <div style="font-size:11px;color:#737373">Cashback ready</div>
+      </div>
+      <div style="flex:1;background:#fff;border-radius:14px;padding:12px 13px;display:flex;flex-direction:column;gap:2px;box-shadow:0 2px 4px rgba(25,21,26,.05)">
+        <div style="font-size:18px;font-weight:700;letter-spacing:-0.01em;color:#19151A">$126</div>
+        <div style="font-size:11px;color:#737373">Saved this year</div>
+      </div>
+      <div style="flex:1;background:#fff;border-radius:14px;padding:12px 13px;display:flex;flex-direction:column;gap:2px;box-shadow:0 2px 4px rgba(25,21,26,.05)">
+        <div style="font-size:18px;font-weight:700;letter-spacing:-0.01em;color:#19151A">12,480</div>
+        <div style="font-size:11px;color:#737373">SkyMiles</div>
+      </div>
+    </div>
+
+    <div onClick="{{ openOffer }}" style="margin:16px 18px 0;background:#19151A;border-radius:18px;padding:15px 16px;display:flex;align-items:center;gap:12px;cursor:pointer">
+      <div style="width:7px;height:7px;border-radius:999px;background:#7BD3AC;flex:0 0 auto"></div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:2px">
+        <div style="color:#fff;font-size:14px;font-weight:600">Mixue · Register 02</div>
+        <div style="color:#FFCD00;font-size:12px;font-weight:600">2 free toppings + 8% back</div>
+      </div>
+      <svg width="18" height="18" viewBox="0 0 24 24"><path transform="translate(8.346 6.346)" d="M 4.6 5.654 L 0 1.054 L 1.054 0 L 6.708 5.654 L 1.054 11.308 L 0 10.254 L 4.6 5.654 Z" fill="#fff"></path></svg>
+    </div>
+
+    <div style="padding:22px 18px 8px;display:flex;align-items:center;justify-content:space-between">
+      <div style="font-size:17px;font-weight:700;letter-spacing:-0.01em">{{ feedTitle }}</div>
+      <div style="font-size:12px;color:#737373">{{ feedNote }}</div>
+    </div>
+    <div style="display:flex;gap:8px;padding:0 18px 4px;overflow-x:auto">
+      <sc-for list="{{ chips }}" as="c" hint-placeholder-count="4">
+        <div onClick="{{ c.pick }}" style="flex:0 0 auto;background:{{ c.bg }};color:{{ c.fg }};font-size:12px;font-weight:600;padding:7px 13px;border-radius:999px;cursor:pointer">{{ c.label }}</div>
+      </sc-for>
+    </div>
+
+    <div style="padding:12px 18px 26px;display:flex;flex-direction:column;gap:12px">
+      <sc-for list="{{ feed }}" as="f" hint-placeholder-count="3">
+        <div onClick="{{ f.open }}" style="background:#fff;border-radius:20px;padding:14px;display:flex;gap:13px;align-items:center;box-shadow:0 2px 5px rgba(25,21,26,.06);cursor:pointer;animation:railIn .3s ease both">
+          <div style="width:52px;height:52px;border-radius:15px;background:{{ f.tint }};display:flex;align-items:center;justify-content:center;flex:0 0 auto">
+            <div style="width:26px;height:26px;background:#fff;-webkit-mask:url({{ f.icon }}) center/contain no-repeat;mask:url({{ f.icon }}) center/contain no-repeat"></div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:3px">
+            <div style="font-size:15px;font-weight:700;letter-spacing:-0.01em">{{ f.name }}</div>
+            <div style="font-size:12px;line-height:17px;color:#5B5B5D">{{ f.desc }}</div>
+            <div style="font-size:11px;color:#8E8B93">{{ f.meta }}</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;flex:0 0 auto">
+            <div style="font-size:17px;font-weight:700;color:#19151A">{{ f.rate }}</div>
+            <div style="font-size:10px;font-weight:600;letter-spacing:.06em;color:#8E8B93">BACK</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="background:#fff;border-top:1px solid #EDEDED;display:flex;padding:9px 4px 12px">
+    <sc-for list="{{ navs }}" as="n" hint-placeholder-count="4">
+      <div onClick="{{ n.go }}" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer">
+        <div style="width:21px;height:21px;background:{{ n.fg }};-webkit-mask:url({{ n.icon }}) center/contain no-repeat;mask:url({{ n.icon }}) center/contain no-repeat"></div>
+        <div style="font-size:10px;font-weight:600;color:{{ n.fg }}">{{ n.label }}</div>
+      </div>
+    </sc-for>
+  </div>
+
+  <sc-if value="{{ showSheet }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ close }}" style="position:absolute;inset:0;background:rgba(25,21,26,.42);display:flex;flex-direction:column;justify-content:flex-end;z-index:9;cursor:pointer">
+      <div style="background:#fff;border-radius:24px 24px 0 0;padding:18px 18px 24px;display:flex;flex-direction:column;gap:14px;animation:railSheet .28s cubic-bezier(.22,.7,.3,1) both">
+        <div style="width:38px;height:4px;border-radius:999px;background:#E4E4E7;align-self:center"></div>
+        <div style="font-size:17px;font-weight:700;letter-spacing:-0.01em">{{ sheetTitle }}</div>
+        <div style="font-size:13px;line-height:19px;color:#5B5B5D">{{ sheetBody }}</div>
+        <sc-for list="{{ sheetRows }}" as="r" hint-placeholder-count="3">
+          <div style="display:flex;align-items:center;gap:12px;padding:4px 0">
+            <div style="flex:1;display:flex;flex-direction:column;gap:1px">
+              <div style="font-size:14px;font-weight:600">{{ r.name }}</div>
+              <div style="font-size:12px;color:#8E8B93">{{ r.meta }}</div>
+            </div>
+            <div style="font-size:14px;font-weight:700">{{ r.value }}</div>
+          </div>
+        </sc-for>
+        <div onClick="{{ close }}" style="background:#19151A;color:#fff;font-size:15px;font-weight:600;padding:15px;border-radius:999px;text-align:center;cursor:pointer">{{ sheetCta }}</div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:390,&quot;height&quot;:844}}">
+const ICON = (b) => 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' + b + '</svg>');
+const I = {
+  cup: ICON('<path d="M5 8h11v6a5 5 0 0 1-5 5H10a5 5 0 0 1-5-5V8Z"/><path d="M16 9.5h1.8a2.7 2.7 0 0 1 0 5.4H16"/><path d="M7.5 4.6c.9.7.9 1.4 0 2.1M11 4.6c.9.7.9 1.4 0 2.1"/>'),
+  car: ICON('<path d="M4.5 15.5v2.2a.8.8 0 0 0 .8.8h1.4a.8.8 0 0 0 .8-.8v-1.2"/><path d="M19.5 15.5v2.2a.8.8 0 0 1-.8.8h-1.4a.8.8 0 0 1-.8-.8v-1.2"/><path d="M3.6 12.2 5.3 7.4A2.4 2.4 0 0 1 7.6 5.8h8.8a2.4 2.4 0 0 1 2.3 1.6l1.7 4.8"/><rect x="3.6" y="12.2" width="16.8" height="4.3" rx="1.8"/>'),
+  store: ICON('<path d="M4.6 9.8V17a1.6 1.6 0 0 0 1.6 1.6h11.6A1.6 1.6 0 0 0 19.4 17V9.8"/><path d="M3.4 9.8h17.2l-1.3-3.6a1.6 1.6 0 0 0-1.5-1H6.2a1.6 1.6 0 0 0-1.5 1L3.4 9.8Z"/><path d="M9.6 18.6v-4.4h4.8v4.4"/>'),
+  ticket: ICON('<path d="M4 8.6A1.6 1.6 0 0 1 5.6 7h12.8A1.6 1.6 0 0 1 20 8.6v1.8a2 2 0 0 0 0 3.2v1.8A1.6 1.6 0 0 1 18.4 17H5.6A1.6 1.6 0 0 1 4 15.4v-1.8a2 2 0 0 0 0-3.2V8.6Z"/><path d="M12 9.4v5.2"/>'),
+  plane: ICON('<path d="M11 4.6a1.1 1.1 0 0 1 2.2 0v4.6l6.4 3.8v1.8l-6.4-2v3.5l2 1.5v1.2l-3.1-.9-3.1.9v-1.2l2-1.5v-3.5l-6.4 2v-1.8L11 9.2V4.6Z"/>'),
+  spa: ICON('<path d="M12 12.4c0-3 1.6-5.6 4-7-.4 3-1.8 5.5-4 7Z"/><path d="M12 12.4c0-3-1.6-5.6-4-7 .4 3 1.8 5.5 4 7Z"/><path d="M4.6 13.6c3.6 4.6 11.2 4.6 14.8 0"/>'),
+  scan: ICON('<path d="M4.6 8.4V6.2a1.6 1.6 0 0 1 1.6-1.6h2.2M15.6 4.6h2.2a1.6 1.6 0 0 1 1.6 1.6v2.2M19.4 15.6v2.2a1.6 1.6 0 0 1-1.6 1.6h-2.2M8.4 19.4H6.2a1.6 1.6 0 0 1-1.6-1.6v-2.2"/><path d="M4.6 12h14.8"/>'),
+  card: ICON('<rect x="3" y="6" width="18" height="12" rx="3"/><path d="M3 10.5h18M6.5 14.5h3"/>'),
+  pin: ICON('<path d="M12 21c3.6-4.4 5.4-7.5 5.4-9.9A5.4 5.4 0 0 0 6.6 11.1c0 2.4 1.8 5.5 5.4 9.9Z"/><circle cx="12" cy="10.8" r="2.1"/>'),
+  list: ICON('<path d="M4 7h16M4 12h16M4 17h10"/>'),
+};
+
+const FEED = [
+  { name:'Mixue Ice Cream & Tea', desc:'2 free toppings today, plus cashback on every order', meta:'At this terminal · Register 02', rate:'8%', icon:I.cup, tint:'#CC2B42', cat:'Food' },
+  { name:'inKind', desc:'Buy dining credit, spend it across six venues here', meta:'Riverside Mall · Level 2', rate:'10%', icon:I.store, tint:'#8A38F5', cat:'Food' },
+  { name:'Groupon', desc:'Local deals land straight in your wallet as vouchers', meta:'11 deals within 300 m', rate:'7%', icon:I.ticket, tint:'#4E8A1E', cat:'Deals' },
+  { name:'Booking', desc:'Stays with your trip dates pre-filled from Delta', meta:'Trips coming up', rate:'4%', icon:I.plane, tint:'#3F34A8', cat:'Travel' },
+  { name:'Uber', desc:'Rides paid from your cashback balance', meta:'Pickup at the north entrance', rate:'3%', icon:I.car, tint:'#2A2830', cat:'Travel' },
+  { name:'MindBody', desc:'Classes and memberships become wallet cards', meta:'Studio on Level 3', rate:'5%', icon:I.spa, tint:'#6D5BF7', cat:'Wellness' },
+];
+
+class Component extends DCLogic {
+  state = { chip:'Near me', sheet:null, card:0, imgs:{} };
+
+  componentDidMount() {
+    import('./card-images.js').then(m => this.setState({ imgs:{ nayax:m.NAYAX_CARD, biz:m.BUSINESS_CARD } }));
+  }
+
+  sheet(kind) { return () => this.setState({ sheet:kind }); }
+
+  renderVals() {
+    const s = this.state;
+    const chipLabels = ['Near me', 'Food', 'Travel', 'Deals', 'Wellness'];
+    const chips = chipLabels.map(l => ({
+      label:l,
+      bg: l === s.chip ? '#19151A' : '#fff',
+      fg: l === s.chip ? '#fff' : '#5B5B5D',
+      pick: () => this.setState({ chip:l }),
+    }));
+    const feed = (s.chip === 'Near me' ? FEED : FEED.filter(f => f.cat === s.chip))
+      .map(f => Object.assign({}, f, { open: this.sheet('brand:' + f.name) }));
+
+    const cardDefs = [
+      { name:'Nayax credit', meta:'•••• 0678 · default', img:s.imgs.nayax },
+      { name:'Nayax business', meta:'•••• 4412', img:s.imgs.biz },
+    ];
+    const cards = cardDefs.map((c, i) => Object.assign({}, c, {
+      bd: i === s.card ? '#19151A' : 'transparent',
+      pick: () => this.setState({ card:i }),
+    }));
+
+    const kind = s.sheet || '';
+    const brand = kind.indexOf('brand:') === 0 ? FEED.filter(f => f.name === kind.slice(6))[0] : null;
+    let sheetTitle = '', sheetBody = '', sheetRows = [], sheetCta = 'Done';
+    if (brand) {
+      sheetTitle = brand.name;
+      sheetBody = brand.desc + ' — runs inside Wallet, nothing to download.';
+      sheetRows = [
+        { name:'Cashback rate', meta:'Funded by the brand, paid by Nayax', value:brand.rate },
+        { name:'Where', meta:brand.meta, value:'—' },
+      ];
+      sheetCta = 'Open mini-app';
+    } else if (kind === 'offer') {
+      sheetTitle = '2 free toppings + 8% back';
+      sheetBody = 'Detected at Mixue, register 02. Applies automatically when you pay with your Nayax card here today.';
+      sheetCta = 'Add to this payment';
+    } else if (kind === 'pay') {
+      sheetTitle = 'Hold near the reader';
+      sheetBody = 'Paying with ' + cardDefs[s.card].name + '. Any offer at this terminal is applied before the amount is charged.';
+      sheetCta = 'Cancel';
+    } else if (kind === 'scan') {
+      sheetTitle = 'Add to wallet';
+      sheetBody = 'Point the camera at a card, ticket or barcode — we detect the type.';
+      sheetRows = [
+        { name:'Payment card', meta:'Debit or credit', value:'' },
+        { name:'Loyalty card', meta:'Points and rewards', value:'' },
+        { name:'Voucher or ticket', meta:'Scan a barcode', value:'' },
+      ];
+      sheetCta = 'Open camera';
+    } else if (kind === 'menu') {
+      sheetTitle = 'Cards & activity';
+      sheetBody = 'Recent payments and the cards behind them.';
+      sheetRows = [
+        { name:'Starbucks', meta:'Today · 8:42 AM', value:'-$6.40' },
+        { name:'Uber', meta:'Today · 7:15 AM', value:'-$14.20' },
+        { name:'Delta Air Lines', meta:'Yesterday', value:'-$412.00' },
+      ];
+      sheetCta = 'Card management';
+    }
+
+    const navDefs = [
+      { label:'Wallet', icon:I.card },
+      { label:'Around me', icon:I.pin },
+      { label:'Vouchers', icon:I.ticket },
+      { label:'Activity', icon:I.list },
+    ];
+
+    return {
+      scanIcon: I.scan,
+      payCardLabel: cardDefs[s.card].name + ' · ' + cardDefs[s.card].meta,
+      cards, chips, feed,
+      feedTitle: s.chip === 'Near me' ? 'Around me now' : s.chip,
+      feedNote: feed.length + ' mini-apps',
+      openPay: this.sheet('pay'), openScan: this.sheet('scan'), openOffer: this.sheet('offer'), openMenu: this.sheet('menu'),
+      close: () => this.setState({ sheet:null }),
+      showSheet: !!s.sheet, sheetTitle, sheetBody, sheetRows, sheetCta,
+      navs: navDefs.map((n, i) => ({
+        label:n.label, icon:n.icon,
+        fg: i === 0 ? '#19151A' : '#A8A8A8',
+        go: i === 3 ? this.sheet('menu') : this.sheet(null),
+      })),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

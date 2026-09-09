@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/nayax-design-system-9617e10b-b9ff-45d0-8713-62d318040e41/colors_and_type.css">
+  <link rel="stylesheet" href="_ds/nayax-design-system-9617e10b-b9ff-45d0-8713-62d318040e41/components/fig-tokens.css">
+  <link rel="stylesheet" href="_ds/nayax-design-system-9617e10b-b9ff-45d0-8713-62d318040e41/components/fig-typography.css">
+  <script src="_ds/nayax-design-system-9617e10b-b9ff-45d0-8713-62d318040e41/_ds_bundle.js"></script>
+  <style>
+    @keyframes vaultIn { from { transform: translate3d(0,14px,0) scale(.97); opacity: 0 } to { transform: none; opacity: 1 } }
+    @keyframes sheetUp { from { transform: translate3d(0,100%,0) } to { transform: none } }
+  </style>
+</helmet>
+<div style="height:100%;display:flex;flex-direction:column;background:#141216;font-family:var(--font-sans);color:#fff;position:relative;overflow:hidden">
+
+  <div data-screen-label="Vault home" style="flex:1;overflow-y:auto;display:flex;flex-direction:column">
+
+    <div style="padding:14px 20px 0;display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:8px">
+        <div style="width:20px;height:20px;border-radius:5px;background:#FFCD00"></div>
+        <div style="font-size:14px;font-weight:700;letter-spacing:-0.01em">Nayax</div>
+      </div>
+      <div onClick="{{ openSheet }}" style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer">
+        <svg width="18" height="18" viewBox="0 0 20 20"><circle cx="10" cy="4" r="1.7" fill="#8E8B93"></circle><circle cx="10" cy="10" r="1.7" fill="#8E8B93"></circle><circle cx="10" cy="16" r="1.7" fill="#8E8B93"></circle></svg>
+      </div>
+    </div>
+
+    <div style="padding:18px 20px 6px;display:flex;flex-direction:column;gap:4px">
+      <div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#8E8B93">Earned with Nayax</div>
+      <div style="display:flex;align-items:baseline;gap:8px">
+        <div style="font-size:40px;line-height:46px;font-weight:700;letter-spacing:-0.03em;color:#FFCD00">{{ headline }}</div>
+        <div style="font-size:13px;color:#8E8B93">{{ headlineNote }}</div>
+      </div>
+    </div>
+
+    <div style="padding:14px 20px 0;position:relative">
+      <div onClick="{{ switchCard }}" style="position:absolute;left:34px;right:34px;top:6px;height:32px;border-radius:14px;background:{{ peekBg }};cursor:pointer;transition:background .3s ease"></div>
+      <img src="{{ frontCard }}" alt="Card" style="position:relative;width:100%;display:block;border-radius:16px;box-shadow:0 14px 34px rgba(0,0,0,.5);animation:vaultIn .34s cubic-bezier(.22,.7,.3,1) both">
+      <div onClick="{{ switchCard }}" style="display:flex;align-items:center;justify-content:center;gap:7px;padding:12px 0 2px;cursor:pointer">
+        <div style="width:18px;height:5px;border-radius:999px;background:{{ dot1 }}"></div>
+        <div style="width:18px;height:5px;border-radius:999px;background:{{ dot2 }}"></div>
+      </div>
+    </div>
+
+    <div onClick="{{ openOffer }}" style="margin:10px 20px 0;background:#FFCD00;border-radius:18px;padding:14px 16px;display:flex;align-items:center;gap:12px;cursor:pointer;color:#19151A">
+      <div style="width:36px;height:36px;border-radius:11px;background:#19151A;color:#FFCD00;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:0 0 auto">MX</div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:1px">
+        <div style="font-size:14px;font-weight:700">Offer at this terminal</div>
+        <div style="font-size:12px;color:rgba(25,21,26,.7)">Mixue · 2 toppings + 8% back</div>
+      </div>
+      <svg width="18" height="18" viewBox="0 0 24 24"><path transform="translate(8.346 6.346)" d="M 4.6 5.654 L 0 1.054 L 1.054 0 L 6.708 5.654 L 1.054 11.308 L 0 10.254 L 4.6 5.654 Z" fill="#19151A"></path></svg>
+    </div>
+
+    <div style="padding:22px 20px 4px;display:flex;align-items:center;gap:18px">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="2">
+        <div onClick="{{ t.pick }}" style="display:flex;flex-direction:column;gap:6px;cursor:pointer">
+          <div style="font-size:16px;font-weight:700;letter-spacing:-0.01em;color:{{ t.fg }}">{{ t.label }}</div>
+          <div style="height:2px;border-radius:2px;background:{{ t.bd }}"></div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="padding:12px 20px 26px;display:flex;flex-direction:column;gap:8px">
+      <sc-for list="{{ list }}" as="n" hint-placeholder-count="4">
+        <div onClick="{{ n.open }}" style="background:#1E1B21;border-radius:16px;padding:13px 14px;display:flex;align-items:center;gap:13px;cursor:pointer">
+          <div style="width:38px;height:38px;border-radius:11px;background:{{ n.tint }};display:flex;align-items:center;justify-content:center;flex:0 0 auto">
+            <div style="width:20px;height:20px;background:#fff;-webkit-mask:url({{ n.icon }}) center/contain no-repeat;mask:url({{ n.icon }}) center/contain no-repeat"></div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:2px">
+            <div style="font-size:14px;font-weight:600">{{ n.name }}</div>
+            <div style="font-size:12px;color:#8E8B93">{{ n.meta }}</div>
+          </div>
+          <div style="font-size:14px;font-weight:700;color:#FFCD00">{{ n.rate }}</div>
+        </div>
+      </sc-for>
+      <div style="font-size:12px;color:#6F6C74;padding:6px 2px 0">Rates are funded by Nayax partners and paid to your card balance.</div>
+    </div>
+  </div>
+
+  <sc-if value="{{ showBrand }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ close }}" style="position:absolute;inset:0;background:rgba(0,0,0,.55);display:flex;flex-direction:column;justify-content:flex-end;z-index:9;cursor:pointer">
+      <div style="background:#1E1B21;border-radius:24px 24px 0 0;padding:18px 20px 26px;display:flex;flex-direction:column;gap:16px;animation:sheetUp .28s cubic-bezier(.22,.7,.3,1) both">
+        <div style="width:38px;height:4px;border-radius:999px;background:#3A3740;align-self:center"></div>
+        <div style="display:flex;align-items:center;gap:13px">
+          <div style="width:46px;height:46px;border-radius:13px;background:{{ brandTint }};display:flex;align-items:center;justify-content:center;flex:0 0 auto">
+            <div style="width:24px;height:24px;background:#fff;-webkit-mask:url({{ brandIcon }}) center/contain no-repeat;mask:url({{ brandIcon }}) center/contain no-repeat"></div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:2px">
+            <div style="font-size:18px;font-weight:700;letter-spacing:-0.01em">{{ brandName }}</div>
+            <div style="font-size:12px;color:#8E8B93">Mini-app · runs inside Wallet</div>
+          </div>
+          <div style="font-size:20px;font-weight:700;color:#FFCD00">{{ brandRate }}</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ brandPerks }}" as="p" hint-placeholder-count="3">
+            <div style="display:flex;gap:10px;align-items:flex-start">
+              <div style="width:5px;height:5px;border-radius:999px;background:#FFCD00;margin-top:7px;flex:0 0 auto"></div>
+              <div style="flex:1;font-size:13px;line-height:19px;color:#D6D4DA">{{ p }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div onClick="{{ close }}" style="background:#FFCD00;color:#19151A;font-size:15px;font-weight:700;padding:15px;border-radius:999px;text-align:center;cursor:pointer">Open mini-app</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ showOffer }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ close }}" style="position:absolute;inset:0;background:rgba(0,0,0,.55);display:flex;flex-direction:column;justify-content:flex-end;z-index:9;cursor:pointer">
+      <div style="background:#1E1B21;border-radius:24px 24px 0 0;padding:18px 20px 26px;display:flex;flex-direction:column;gap:16px;animation:sheetUp .28s cubic-bezier(.22,.7,.3,1) both">
+        <div style="width:38px;height:4px;border-radius:999px;background:#3A3740;align-self:center"></div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="width:7px;height:7px;border-radius:999px;background:#1EA472"></div>
+          <div style="font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#8E8B93">Detected at register 02</div>
+        </div>
+        <div style="font-size:26px;line-height:32px;font-weight:700;letter-spacing:-0.02em;color:#FFCD00">2 free toppings<br>+ 8% back</div>
+        <div style="font-size:13px;line-height:19px;color:#D6D4DA">Applies automatically when you pay with your Nayax card here today.</div>
+        <div onClick="{{ close }}" style="background:#FFCD00;color:#19151A;font-size:15px;font-weight:700;padding:15px;border-radius:999px;text-align:center;cursor:pointer">Add to this payment</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ showSheet }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ close }}" style="position:absolute;inset:0;background:rgba(0,0,0,.55);display:flex;flex-direction:column;justify-content:flex-end;z-index:9;cursor:pointer">
+      <div style="background:#1E1B21;border-radius:24px 24px 0 0;padding:18px 20px 26px;display:flex;flex-direction:column;gap:14px;animation:sheetUp .28s cubic-bezier(.22,.7,.3,1) both">
+        <div style="width:38px;height:4px;border-radius:999px;background:#3A3740;align-self:center"></div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#8E8B93">Recent</div>
+        <sc-for list="{{ tx }}" as="t" hint-placeholder-count="3">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="flex:1;display:flex;flex-direction:column;gap:1px">
+              <div style="font-size:14px;font-weight:600">{{ t.name }}</div>
+              <div style="font-size:12px;color:#8E8B93">{{ t.time }}</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:1px">
+              <div style="font-size:14px;font-weight:700">{{ t.amount }}</div>
+              <div style="font-size:11px;color:#7BD3AC">{{ t.back }}</div>
+            </div>
+          </div>
+        </sc-for>
+        <div onClick="{{ close }}" style="align-self:flex-end;font-size:13px;font-weight:600;color:#FFCD00;cursor:pointer;padding-top:2px">More transactions</div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:390,&quot;height&quot;:844}}">
+const ICON = (b) => 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' + b + '</svg>');
+const I = {
+  cup: ICON('<path d="M5 8h11v6a5 5 0 0 1-5 5H10a5 5 0 0 1-5-5V8Z"/><path d="M16 9.5h1.8a2.7 2.7 0 0 1 0 5.4H16"/><path d="M7.5 4.6c.9.7.9 1.4 0 2.1M11 4.6c.9.7.9 1.4 0 2.1"/>'),
+  car: ICON('<path d="M4.5 15.5v2.2a.8.8 0 0 0 .8.8h1.4a.8.8 0 0 0 .8-.8v-1.2"/><path d="M19.5 15.5v2.2a.8.8 0 0 1-.8.8h-1.4a.8.8 0 0 1-.8-.8v-1.2"/><path d="M3.6 12.2 5.3 7.4A2.4 2.4 0 0 1 7.6 5.8h8.8a2.4 2.4 0 0 1 2.3 1.6l1.7 4.8"/><rect x="3.6" y="12.2" width="16.8" height="4.3" rx="1.8"/>'),
+  store: ICON('<path d="M4.6 9.8V17a1.6 1.6 0 0 0 1.6 1.6h11.6A1.6 1.6 0 0 0 19.4 17V9.8"/><path d="M3.4 9.8h17.2l-1.3-3.6a1.6 1.6 0 0 0-1.5-1H6.2a1.6 1.6 0 0 0-1.5 1L3.4 9.8Z"/><path d="M9.6 18.6v-4.4h4.8v4.4"/>'),
+  ticket: ICON('<path d="M4 8.6A1.6 1.6 0 0 1 5.6 7h12.8A1.6 1.6 0 0 1 20 8.6v1.8a2 2 0 0 0 0 3.2v1.8A1.6 1.6 0 0 1 18.4 17H5.6A1.6 1.6 0 0 1 4 15.4v-1.8a2 2 0 0 0 0-3.2V8.6Z"/><path d="M12 9.4v5.2"/>'),
+  plane: ICON('<path d="M11 4.6a1.1 1.1 0 0 1 2.2 0v4.6l6.4 3.8v1.8l-6.4-2v3.5l2 1.5v1.2l-3.1-.9-3.1.9v-1.2l2-1.5v-3.5l-6.4 2v-1.8L11 9.2V4.6Z"/>'),
+  spa: ICON('<path d="M12 12.4c0-3 1.6-5.6 4-7-.4 3-1.8 5.5-4 7Z"/><path d="M12 12.4c0-3-1.6-5.6-4-7 .4 3 1.8 5.5 4 7Z"/><path d="M4.6 13.6c3.6 4.6 11.2 4.6 14.8 0"/>'),
+};
+
+const NEAR = [
+  { name:'Mixue Ice Cream & Tea', meta:'Register 02 · at this terminal', rate:'8%', icon:I.cup, tint:'#CC2B42', perks:['2 free toppings today','8% back to your card balance','Order ahead, skip the queue'] },
+  { name:'Starbucks', meta:'42 m · Level 2', rate:'5%', icon:I.cup, tint:'#1E6B4F', perks:['5% back on every order','Stars sync to your loyalty card','Reorder in two taps'] },
+  { name:'inKind', meta:'6 restaurants nearby', rate:'10%', icon:I.store, tint:'#8A38F5', perks:['10% back on dining credit','Credit never expires','Works across 6 venues here'] },
+  { name:'Groupon', meta:'11 deals within 300 m', rate:'7%', icon:I.ticket, tint:'#4E8A1E', perks:['7% back on local deals','Vouchers land in your wallet','No printouts or codes'] },
+];
+const PICKS = [
+  { name:'Booking', meta:'Your Delta trip dates are filled in', rate:'4%', icon:I.plane, tint:'#3F34A8', perks:['4% back on stays','Free cancellation up to 24 h','Pre-filled from your trips'] },
+  { name:'Uber', meta:'Pickup outside the north entrance', rate:'3%', icon:I.car, tint:'#2A2830', perks:['3% back on rides','Pay from your cashback balance','Receipts filed automatically'] },
+  { name:'MindBody', meta:'Studio on Level 3', rate:'5%', icon:I.spa, tint:'#6D5BF7', perks:['5% back on classes','Class pass becomes a wallet card','Book without installing an app'] },
+];
+
+class Component extends DCLogic {
+  state = { tab:'near', card:'nayax', sheet:null, brand:null, cards:{} };
+
+  componentDidMount() {
+    import('./card-images.js').then(m => this.setState({ cards:{ nayax:m.NAYAX_CARD, biz:m.BUSINESS_CARD } }));
+  }
+
+  renderVals() {
+    const s = this.state;
+    const near = s.tab === 'near';
+    const list = (near ? NEAR : PICKS).map(x => Object.assign({}, x, { open: () => this.setState({ brand:x }) }));
+    const b = s.brand || NEAR[0];
+    const front = s.card === 'nayax' ? s.cards.nayax : s.cards.biz;
+    return {
+      headline: near ? '$47.20' : '12,480',
+      headlineNote: near ? 'cashback ready to spend' : 'Delta SkyMiles this year',
+      frontCard: front,
+      switchCard: () => this.setState(st => ({ card: st.card === 'nayax' ? 'biz' : 'nayax' })),
+      peekBg: s.card === 'nayax' ? '#F2E600' : '#2A2830',
+      dot1: s.card === 'nayax' ? '#FFCD00' : '#3A3740',
+      dot2: s.card === 'nayax' ? '#3A3740' : '#FFCD00',
+      tabs: [
+        { label:'Around me', fg: near ? '#fff' : '#6F6C74', bd: near ? '#FFCD00' : 'transparent', pick: () => this.setState({ tab:'near' }) },
+        { label:'Picked for me', fg: near ? '#6F6C74' : '#fff', bd: near ? 'transparent' : '#FFCD00', pick: () => this.setState({ tab:'picks' }) },
+      ],
+      list,
+      showBrand: !!s.brand, showOffer: s.sheet === 'offer', showSheet: s.sheet === 'menu',
+      openOffer: () => this.setState({ sheet:'offer' }),
+      openSheet: () => this.setState({ sheet:'menu' }),
+      close: () => this.setState({ sheet:null, brand:null }),
+      brandName:b.name, brandRate:b.rate, brandIcon:b.icon, brandTint:b.tint, brandPerks:b.perks,
+      tx: [
+        { name:'Starbucks', time:'Today · 8:42 AM', amount:'-$6.40', back:'+$0.32 back' },
+        { name:'Uber', time:'Today · 7:15 AM', amount:'-$14.20', back:'+$0.43 back' },
+        { name:'Delta Air Lines', time:'Yesterday', amount:'-$412.00', back:'+$8.24 back' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

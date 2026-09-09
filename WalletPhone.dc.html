@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/nayax-design-system-9617e10b-b9ff-45d0-8713-62d318040e41/colors_and_type.css">
+  <link rel="stylesheet" href="_ds/nayax-design-system-9617e10b-b9ff-45d0-8713-62d318040e41/components/fig-tokens.css">
+  <link rel="stylesheet" href="_ds/nayax-design-system-9617e10b-b9ff-45d0-8713-62d318040e41/components/fig-typography.css">
+  <link rel="stylesheet" href="_ds/nayax-design-system-9617e10b-b9ff-45d0-8713-62d318040e41/components/fig-assets.css">
+  <link rel="stylesheet" href="_ds/nayax-design-system-9617e10b-b9ff-45d0-8713-62d318040e41/styles.css">
+  <script src="_ds/nayax-design-system-9617e10b-b9ff-45d0-8713-62d318040e41/_ds_bundle.js"></script>
+  <style>
+    *::-webkit-scrollbar { width: 0; height: 0 }
+    @keyframes cardSwapIn {
+      0% { transform: translate3d(14%, 5%, 0) scale(.94); opacity: 0; }
+      60% { opacity: 1; }
+      100% { transform: translate3d(0, 0, 0) scale(1); opacity: 1; }
+    }
+    @keyframes cardBackIn {
+      0% { transform: translate3d(-8%, -2%, 0); opacity: .2; }
+      100% { transform: translate3d(0, 0, 0); opacity: 1; }
+    }
+  </style>
+</helmet>
+<div style="height:100%;min-height:100%;display:flex;flex-direction:column;background:#F7F7F7;font-family:var(--font-sans);color:#19151A;position:relative">
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+    <div data-screen-label="Home" style="display:flex;flex-direction:column;flex:1">
+
+      <div style="padding:10px 16px 20px;display:flex;flex-direction:column">
+        <div style="align-self:flex-end;display:flex;align-items:center;gap:8px;margin-bottom:20px">
+          <div onClick="{{ goAdd }}" title="Issue a credit card" style="width:48px;height:48px;border-radius:999px;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 3px rgba(25,21,26,.08)">
+            <div style="width:24px;height:24px;background:#19151A;-webkit-mask:url({{ issueIcon }}) center/contain no-repeat;mask:url({{ issueIcon }}) center/contain no-repeat"></div>
+          </div>
+          <div style="height:48px;border-radius:999px;background:#fff;display:flex;align-items:center;gap:4px;padding:0 7px;box-shadow:0 1px 3px rgba(25,21,26,.08)">
+            <div onClick="{{ openSearch }}" title="Search" style="width:42px;height:42px;border-radius:999px;display:flex;align-items:center;justify-content:center;cursor:pointer">
+              <div style="width:23px;height:23px;background:#19151A;-webkit-mask:url({{ searchIcon }}) center/contain no-repeat;mask:url({{ searchIcon }}) center/contain no-repeat"></div>
+            </div>
+            <div onClick="{{ openMenu }}" title="More" style="width:42px;height:42px;border-radius:999px;display:flex;align-items:center;justify-content:center;cursor:pointer">
+              <svg width="24" height="24" viewBox="0 0 20 20" fill="none"><circle cx="4" cy="10" r="1.7" fill="#5B5B5D"></circle><circle cx="10" cy="10" r="1.7" fill="#5B5B5D"></circle><circle cx="16" cy="10" r="1.7" fill="#5B5B5D"></circle></svg>
+            </div>
+          </div>
+        </div>
+        <div style="position:relative;padding-right:{{ stackPadRight }}">
+          <div onClick="{{ switchCard }}" style="position:absolute;top:8%;bottom:8%;right:0;left:22%;display:{{ backDisplay }};background:{{ backBg }};border-radius:16px;cursor:pointer;transition:background .35s ease;animation:cardBackIn .38s ease both;align-items:flex-start;justify-content:flex-end;padding:10px 12px">
+            <div style="font-size:11px;font-weight:700;color:{{ backLabelColor }};letter-spacing:.02em">{{ backLabel }}</div>
+          </div>
+          <sc-if value="{{ frontIsNayax }}" hint-placeholder-val="{{ true }}">
+            <img src="{{ nayaxCardImg }}" alt="Nayax Pay card ending 0678" style="position:relative;width:100%;display:block;border-radius:16px;box-shadow:0 10px 26px rgba(25,21,26,.26);animation:cardSwapIn .38s cubic-bezier(.22,.7,.3,1) both">
+          </sc-if>
+          <sc-if value="{{ frontIsDelta }}" hint-placeholder-val="{{ false }}">
+            <img src="{{ businessCardImg }}" alt="Business card ending 0678" style="position:relative;width:100%;display:block;border-radius:16px;box-shadow:0 10px 26px rgba(25,21,26,.26);animation:cardSwapIn .38s cubic-bezier(.22,.7,.3,1) both">
+          </sc-if>
+        </div>
+        <div onClick="{{ goCashback }}" style="margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:70px;cursor:pointer">
+          <div style="flex:1;display:flex;flex-direction:column;min-width:0;opacity:{{ statOpacity }};transform:{{ statShift }};transition:opacity .7s ease,transform .7s cubic-bezier(.22,.7,.3,1)">
+            <div style="font-size:15px;color:#5B5B5D;white-space:nowrap">{{ statLabel }}</div>
+            <div style="font-size:44px;line-height:52px;font-weight:600;letter-spacing:-0.03em;color:#19151A;white-space:nowrap">{{ statValue }}</div>
+          </div>
+          <div onClick="{{ goCashback }}" style="flex:0 0 auto;background:#19151A;color:#fff;font-size:14px;font-weight:600;padding:11px 18px;border-radius:999px;cursor:pointer;white-space:nowrap">Redeem</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:4px;background:#EDEBF6;align-self:center;border-radius:999px;padding:3px">
+        <sc-for list="{{ homeTabs }}" as="h" hint-placeholder-count="2">
+          <div onClick="{{ h.pick }}" style="text-align:center;font-size:13px;font-weight:600;padding:8px 16px;border-radius:999px;background:{{ h.bg }};color:{{ h.fg }};box-shadow:{{ h.sh }};cursor:pointer;white-space:nowrap">{{ h.label }}</div>
+        </sc-for>
+      </div>
+
+      <sc-if value="{{ mA }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:18px 16px 0;display:flex;flex-direction:column;gap:12px">
+          <sc-for list="{{ homeList }}" as="n" hint-placeholder-count="3">
+            <div onClick="{{ n.open }}" style="background:{{ n.rowBg }};border-radius:18px;padding:12px;display:flex;align-items:center;gap:12px;box-shadow:0 2px 4px rgba(0,0,0,.04);cursor:pointer">
+              <div style="width:44px;height:44px;border-radius:12px;background:{{ n.color }};color:{{ n.markColor }};-webkit-text-fill-color:{{ n.markColor }};font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:0 0 auto">{{ n.mark }}</div>
+              <div style="flex:1;display:flex;flex-direction:column;gap:1px">
+                <div style="font-size:15px;font-weight:600;color:{{ n.nameColor }}">{{ n.name }}</div>
+                <div style="font-size:12px;color:{{ n.metaColor }}">{{ n.meta }}</div>
+              </div>
+              <div style="background:{{ n.rateBg }};color:{{ n.rateColor }};font-size:12px;font-weight:700;padding:6px 10px;border-radius:999px;white-space:nowrap">{{ n.rate }}</div>
+            </div>
+          </sc-for>
+          <div onClick="{{ goMarket }}" style="align-self:flex-end;font-size:13px;font-weight:600;color:#5F4BF5;cursor:pointer;padding:2px 4px">See all</div>
+          <div onClick="{{ goOffer }}" style="background:#FFFEB2;border-radius:18px;padding:14px;margin:12px 0 0;display:flex;align-items:center;gap:12px;cursor:pointer">
+            <img src="{{ burgerImg }}" alt="" style="width:58px;height:58px;object-fit:contain;flex:0 0 auto">
+            <div style="flex:1;font-size:13px;line-height:18px">You are standing at <b>McDonald's</b>. An offer is waiting.</div>
+            <div style="color:#19151A;display:flex"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path transform="translate(8.346 6.346)" d="M 4.6 5.654 L 0 1.054 L 1.054 0 L 6.708 5.654 L 1.054 11.308 L 0 10.254 L 4.6 5.654 Z" fill="currentColor"></path></svg></div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ mB }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:18px 16px 12px;display:flex;flex-direction:column;gap:14px">
+          <div style="font-size:17px;font-weight:700;letter-spacing:-0.01em">Your cards</div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="background:#fff;border-radius:18px;padding:12px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 4px rgba(0,0,0,.04)">
+              <img src="{{ nayaxCardImg }}" alt="Nayax Pay card" style="width:78px;border-radius:6px;display:block;flex:0 0 auto">
+              <div style="flex:1;display:flex;flex-direction:column;gap:2px">
+                <div style="font-size:14px;font-weight:600">Nayax credit card</div>
+                <div style="font-size:12px;color:#737373">•••• 0678 · default</div>
+              </div>
+              <div style="font-size:14px;font-weight:700;color:#2A2461">$47.20 back</div>
+            </div>
+            <div style="background:#6D5BF7;border-radius:18px;padding:16px;display:flex;align-items:center;justify-content:space-between">
+              <div style="display:flex;flex-direction:column;gap:2px">
+                <div style="color:#fff;font-size:14px;font-weight:600">Delta SkyMiles</div>
+                <div style="color:#E2DEFD;font-size:12px">Loyalty · 2X points</div>
+              </div>
+              <div style="color:#fff;font-size:14px;font-weight:700">12,480</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding-top:4px">
+            <div style="font-size:17px;font-weight:700;letter-spacing:-0.01em">{{ homeTitle }}</div>
+            <div onClick="{{ goMarket }}" style="font-size:13px;font-weight:600;color:#5F4BF5;cursor:pointer">Discover</div>
+          </div>
+          <sc-for list="{{ homeFeed }}" as="f" hint-placeholder-count="2">
+            <div onClick="{{ f.open }}" style="background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 2px 4px rgba(0,0,0,.04);cursor:pointer">
+              <div style="height:96px;background:{{ f.color }};display:flex;align-items:flex-end;padding:12px">
+                <div style="background:rgba(0,0,0,.35);color:#fff;font-size:12px;font-weight:700;padding:5px 10px;border-radius:999px">{{ f.rate }} back</div>
+              </div>
+              <div style="padding:12px 14px;display:flex;flex-direction:column;gap:2px">
+                <div style="font-size:15px;font-weight:700">{{ f.name }}</div>
+                <div style="font-size:13px;color:#5B5B5D">{{ f.desc }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ mC }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:14px 16px 12px;display:flex;flex-direction:column;gap:12px">
+          <div onClick="{{ goMarket }}" style="background:#fff;border:1.5px solid #E0E0E0;border-radius:12px;padding:11px 14px;display:flex;align-items:center;gap:10px;cursor:pointer">
+            <div style="width:17px;height:17px;background:#5B5B5D;-webkit-mask:url({{ searchIcon }}) center/contain no-repeat;mask:url({{ searchIcon }}) center/contain no-repeat"></div>
+            <div style="flex:1;font-size:14px;color:#737373">Pay, find a brand, or type an amount</div>
+            <div style="font-size:11px;font-weight:700;color:#5F4BF5;letter-spacing:.04em">VOICE</div>
+          </div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5B5B5D;padding-top:4px">Cards &amp; balances</div>
+          <div style="background:#fff;border-radius:16px;box-shadow:0 2px 4px rgba(0,0,0,.04);overflow:hidden">
+            <sc-for list="{{ denseCards }}" as="d" hint-placeholder-count="5">
+              <div onClick="{{ d.open }}" style="display:flex;align-items:center;gap:12px;padding:11px 14px;border-bottom:1px solid #F1F0F5;cursor:pointer">
+                <div style="width:30px;height:30px;border-radius:8px;background:{{ d.color }};color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center">{{ d.mark }}</div>
+                <div style="flex:1;display:flex;flex-direction:column">
+                  <div style="font-size:14px;font-weight:600">{{ d.name }}</div>
+                  <div style="font-size:12px;color:#737373">{{ d.meta }}</div>
+                </div>
+                <div style="font-size:14px;font-weight:700;text-align:right">{{ d.value }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5B5B5D;padding-top:4px">{{ homeTitle }}</div>
+          <div style="background:#fff;border-radius:16px;box-shadow:0 2px 4px rgba(0,0,0,.04);overflow:hidden">
+            <sc-for list="{{ homeList }}" as="n" hint-placeholder-count="3">
+              <div onClick="{{ n.open }}" style="display:flex;align-items:center;gap:12px;padding:11px 14px;border-bottom:1px solid #F1F0F5;cursor:pointer">
+                <div style="width:30px;height:30px;border-radius:8px;background:{{ n.color }};color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:0 0 auto">{{ n.mark }}</div>
+                <div style="flex:1;display:flex;flex-direction:column">
+                  <div style="font-size:14px;font-weight:600">{{ n.name }}</div>
+                  <div style="font-size:12px;color:#737373">{{ n.meta }}</div>
+                </div>
+                <div style="font-size:14px;font-weight:700;color:#2A2461">{{ n.rate }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div onClick="{{ goOffer }}" style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:#fff;border-radius:16px;box-shadow:0 2px 4px rgba(0,0,0,.04);cursor:pointer">
+            <div style="width:8px;height:8px;border-radius:999px;background:#CC2B42"></div>
+            <div style="flex:1;font-size:13px">Offer available at Mixue · 8% back</div>
+            <div style="color:#A8A8A8;display:flex"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path transform="translate(8.346 6.346)" d="M 4.6 5.654 L 0 1.054 L 1.054 0 L 6.708 5.654 L 1.054 11.308 L 0 10.254 L 4.6 5.654 Z" fill="currentColor"></path></svg></div>
+          </div>
+        </div>
+      </sc-if>
+
+      <div style="padding:6px 16px 100px;display:flex;flex-direction:column;gap:12px">
+        <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5B5B5D">Your apps</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px 10px;justify-items:center">
+          <sc-for list="{{ myApps }}" as="a" hint-placeholder-count="6">
+            <div onClick="{{ a.open }}" style="display:flex;flex-direction:column;align-items:center;gap:7px;cursor:pointer">
+              <div style="width:58px;height:58px;background:#fff;border-radius:16px;box-shadow:0 2px 4px rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center">
+                <div style="width:26px;height:26px;background:{{ a.color }};-webkit-mask:url({{ a.icon }}) center/contain no-repeat;mask:url({{ a.icon }}) center/contain no-repeat"></div>
+              </div>
+              <div style="font-size:12px;font-weight:600;color:#19151A">{{ a.name }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isMarket }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Discover" style="display:flex;flex-direction:column;flex:1">
+      <div style="background:#fff;padding:14px 16px 12px;display:flex;flex-direction:column;gap:12px;border-bottom:1px solid #EFEEF4">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div onClick="{{ goHome }}" style="cursor:pointer;color:#19151A;display:flex"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path transform="translate(8.346 6.346)" d="M 2.108 5.654 L 6.708 10.254 L 5.654 11.308 L 0 5.654 L 5.654 0 L 6.708 1.054 L 2.108 5.654 Z" fill="currentColor"></path></svg></div>
+          <div style="font-size:18px;font-weight:700;letter-spacing:-0.01em">{{ marketTitle }}</div>
+        </div>
+      </div>
+
+      <sc-if value="{{ mA }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:16px">
+          <sc-if value="{{ showMarketBanner }}" hint-placeholder-val="{{ true }}">
+            <div style="background:#19151A;border-radius:18px;padding:14px;display:flex;align-items:center;gap:12px">
+              <div style="width:38px;height:38px;border-radius:999px;background:#6D5BF7;display:flex;align-items:center;justify-content:center;flex:0 0 auto"><div style="width:19px;height:19px;background:#fff;-webkit-mask:url({{ marketBannerIcon }}) center/contain no-repeat;mask:url({{ marketBannerIcon }}) center/contain no-repeat"></div></div>
+              <div style="flex:1;display:flex;flex-direction:column;gap:1px">
+                <div style="color:#fff;font-size:14px;font-weight:600">{{ marketBannerTitle }}</div>
+                <div style="color:#A8A8A8;font-size:12px">{{ marketBannerMeta }}</div>
+              </div>
+            </div>
+          </sc-if>
+          <sc-for list="{{ marketGroups }}" as="g" hint-placeholder-count="2">
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5B5B5D">{{ g.label }}</div>
+              <sc-for list="{{ g.items }}" as="n" hint-placeholder-count="3">
+                <div onClick="{{ n.open }}" style="background:#fff;border-radius:16px;padding:12px;display:flex;align-items:center;gap:12px;box-shadow:0 2px 4px rgba(0,0,0,.04);cursor:pointer">
+                  <div style="width:40px;height:40px;border-radius:12px;background:{{ n.color }};color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center">{{ n.mark }}</div>
+                  <div style="flex:1;display:flex;flex-direction:column;gap:1px">
+                    <div style="font-size:15px;font-weight:600">{{ n.name }}</div>
+                    <div style="font-size:12px;color:#5B5B5D">{{ n.meta }}</div>
+                  </div>
+                  <div style="background:#F6F5FD;color:#2A2461;font-size:12px;font-weight:700;padding:6px 10px;border-radius:999px">{{ n.rate }}</div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ mB }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <sc-for list="{{ chips }}" as="c" hint-placeholder-count="4">
+              <div onClick="{{ c.pick }}" style="background:{{ c.bg }};color:{{ c.fg }};font-size:13px;font-weight:600;padding:7px 13px;border-radius:999px;cursor:pointer">{{ c.label }}</div>
+            </sc-for>
+          </div>
+          <sc-for list="{{ feed }}" as="f" hint-placeholder-count="3">
+            <div onClick="{{ f.open }}" style="background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 2px 4px rgba(0,0,0,.04);cursor:pointer">
+              <div style="height:120px;background:{{ f.color }};display:flex;align-items:flex-start;justify-content:space-between;padding:12px">
+                <div style="background:rgba(0,0,0,.35);color:#fff;font-size:11px;font-weight:700;padding:5px 10px;border-radius:999px;letter-spacing:.04em">{{ f.tag }}</div>
+                <div style="background:#FFCD00;color:#19151A;font-size:13px;font-weight:700;padding:6px 11px;border-radius:999px">{{ f.rate }} back</div>
+              </div>
+              <div style="padding:14px;display:flex;flex-direction:column;gap:6px">
+                <div style="font-size:17px;font-weight:700;letter-spacing:-0.01em">{{ f.name }}</div>
+                <div style="font-size:13px;line-height:19px;color:#5B5B5D">{{ f.desc }}</div>
+                <div style="display:flex;align-items:center;gap:8px;padding-top:6px">
+                  <div style="background:#19151A;color:#fff;font-size:13px;font-weight:600;padding:9px 16px;border-radius:999px">Open</div>
+                  <div style="font-size:12px;color:#737373">Runs inside Wallet</div>
+                </div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ mC }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:14px">
+          <div style="background:#fff;border:1.5px solid #6D5BF7;border-radius:12px;padding:11px 14px;display:flex;align-items:center;gap:10px;box-shadow:0 0 0 3px rgba(109,91,247,.15)">
+            <div style="width:17px;height:17px;background:#5B5B5D;-webkit-mask:url({{ searchIcon }}) center/contain no-repeat;mask:url({{ searchIcon }}) center/contain no-repeat"></div>
+            <div style="flex:1;font-size:14px;font-weight:600">{{ query }}</div>
+            <div onClick="{{ clearQuery }}" style="color:#737373;cursor:pointer;display:flex"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path transform="translate(5.346 5.346)" d="M 1.054 13.308 L 0 12.254 L 5.6 6.654 L 0 1.054 L 1.054 0 L 6.654 5.6 L 12.254 0 L 13.308 1.054 L 7.708 6.654 L 13.308 12.254 L 12.254 13.308 L 6.654 7.708 L 1.054 13.308 Z" fill="currentColor"></path></svg></div>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <sc-for list="{{ chips }}" as="c" hint-placeholder-count="4">
+              <div onClick="{{ c.pick }}" style="background:{{ c.bg }};color:{{ c.fg }};font-size:13px;font-weight:600;padding:7px 13px;border-radius:999px;cursor:pointer">{{ c.label }}</div>
+            </sc-for>
+          </div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5B5B5D">{{ resultCount }} mini-apps</div>
+          <div style="background:#fff;border-radius:16px;box-shadow:0 2px 4px rgba(0,0,0,.04);overflow:hidden">
+            <sc-for list="{{ results }}" as="r" hint-placeholder-count="6">
+              <div onClick="{{ r.open }}" style="display:flex;align-items:center;gap:12px;padding:11px 14px;border-bottom:1px solid #F1F0F5;cursor:pointer">
+                <div style="width:34px;height:34px;border-radius:9px;background:{{ r.color }};color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center">{{ r.mark }}</div>
+                <div style="flex:1;display:flex;flex-direction:column">
+                  <div style="font-size:14px;font-weight:600">{{ r.name }}</div>
+                  <div style="font-size:12px;color:#737373">{{ r.desc }}</div>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:flex-end">
+                  <div style="font-size:14px;font-weight:700;color:#2A2461">{{ r.rate }}</div>
+                  <div style="font-size:11px;color:#A8A8A8">back</div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isBrand }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Mini-app detail" style="display:flex;flex-direction:column;flex:1">
+      <div style="background:{{ brandColor }};padding:14px 16px 22px;display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div onClick="{{ goBack }}" style="width:32px;height:32px;border-radius:999px;background:rgba(255,255,255,.22);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path transform="translate(8.346 6.346)" d="M 2.108 5.654 L 6.708 10.254 L 5.654 11.308 L 0 5.654 L 5.654 0 L 6.708 1.054 L 2.108 5.654 Z" fill="currentColor"></path></svg></div>
+          <div style="background:rgba(0,0,0,.28);color:#fff;font-size:11px;font-weight:700;letter-spacing:.06em;padding:6px 11px;border-radius:999px">MINI-APP · NO DOWNLOAD</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="width:56px;height:56px;border-radius:16px;background:rgba(255,255,255,.9);color:#19151A;font-size:17px;font-weight:700;display:flex;align-items:center;justify-content:center">{{ brandMark }}</div>
+          <div style="display:flex;flex-direction:column;gap:2px">
+            <div style="color:#fff;font-size:22px;font-weight:700;letter-spacing:-0.01em">{{ brandName }}</div>
+            <div style="color:rgba(255,255,255,.85);font-size:13px">{{ brandCat }}</div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:16px;display:flex;flex-direction:column;gap:14px">
+        <div style="background:#fff;border:1px solid #EFEEF4;border-radius:22px;padding:18px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 4px rgba(0,0,0,.04)">
+          <div style="display:flex;flex-direction:column;gap:3px">
+            <div style="color:#19151A;font-size:28px;font-weight:700;letter-spacing:-0.02em">{{ brandRate }} back</div>
+            <div style="color:#737373;font-size:12px">Paid to your Nayax balance instantly</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div onClick="{{ goRedeem }}" style="background:#262626;color:#fff;font-size:15px;font-weight:600;padding:14px;border-radius:999px;text-align:center;cursor:pointer">Open mini-app</div>
+          <div onClick="{{ goVouchers }}" style="border:1.5px solid #262626;color:#262626;font-size:15px;font-weight:600;padding:13px;border-radius:999px;text-align:center;cursor:pointer">Add to wallet</div>
+        </div>
+        <div style="background:#fff;border-radius:18px;padding:4px 14px;box-shadow:0 2px 4px rgba(0,0,0,.04)">
+          <sc-for list="{{ brandPerks }}" as="p" hint-placeholder-count="3">
+            <div style="display:flex;align-items:flex-start;gap:10px;padding:12px 0;border-bottom:{{ p.bd }}">
+              <div style="width:20px;height:20px;border-radius:999px;background:#F6F5FD;color:#5F4BF5;display:flex;align-items:center;justify-content:center;margin-top:1px;flex:0 0 auto"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path transform="translate(4.215 6.35)" d="M 5.335 11.304 L 0 5.969 L 1.069 4.9 L 5.335 9.165 L 14.5 0 L 15.569 1.069 L 5.335 11.304 Z" fill="currentColor"></path></svg></div>
+              <div style="flex:1;font-size:13px;line-height:19px">{{ p.text }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="font-size:12px;color:#737373;line-height:17px">Nayax settles cashback with {{ brandName }} directly. No card data is shared with the brand.</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isOffer }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Proximity offer" style="position:absolute;inset:0;background:#F7F7F7;display:flex;flex-direction:column;z-index:8">
+      <div style="flex:1;padding:16px 20px 26px;display:flex;flex-direction:column;gap:18px;justify-content:center">
+        <div style="display:flex;align-items:center;gap:12px;position:absolute;top:14px;left:16px">
+          <div onClick="{{ closeOffer }}" style="width:34px;height:34px;border-radius:999px;background:#EDEBF6;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#19151A"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path transform="translate(8.346 6.346)" d="M 2.108 5.654 L 6.708 10.254 L 5.654 11.308 L 0 5.654 L 5.654 0 L 6.708 1.054 L 2.108 5.654 Z" fill="currentColor"></path></svg></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="width:7px;height:7px;border-radius:999px;background:#1EA472"></div>
+          <div style="color:#737373;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase">Detected at this terminal</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="width:52px;height:52px;border-radius:15px;background:#CC2B42;color:#fff;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:0 0 auto">MC</div>
+          <div style="display:flex;flex-direction:column;gap:2px">
+            <div style="color:#19151A;font-size:19px;font-weight:700;letter-spacing:-0.01em">McDonald's</div>
+            <div style="color:#737373;font-size:13px">Riverside Mall · Register 02</div>
+          </div>
+        </div>
+        <div style="background:#fff;border:1px solid #EFEEF4;border-radius:22px;padding:22px;display:flex;flex-direction:column;gap:12px;box-shadow:0 2px 6px rgba(25,21,26,.05)">
+          <div style="color:#19151A;font-size:30px;line-height:36px;font-weight:700;letter-spacing:-0.02em">Free side + 8% back</div>
+          <div style="color:#5B5B5D;font-size:13px;line-height:19px">Applies automatically when you pay with Nayax Pay here today. Cashback lands in your balance at checkout.</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div onClick="{{ goRedeem }}" style="background:#19151A;color:#fff;font-size:15px;font-weight:600;padding:15px;border-radius:999px;text-align:center;cursor:pointer">Add offer to this payment</div>
+          <div onClick="{{ closeOffer }}" style="border:1.5px solid #19151A;color:#19151A;font-size:15px;font-weight:600;padding:14px;border-radius:999px;text-align:center;cursor:pointer">Not now</div>
+          <div onClick="{{ closeOffer }}" style="color:#737373;font-size:13px;text-align:center;padding:6px;cursor:pointer">Stop offers from this brand</div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isVouchers }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Vouchers" style="display:flex;flex-direction:column;flex:1">
+      <div style="padding:14px 16px 16px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div onClick="{{ goHome }}" style="cursor:pointer;color:#19151A;display:flex;flex:0 0 auto"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path transform="translate(8.346 6.346)" d="M 2.108 5.654 L 6.708 10.254 L 5.654 11.308 L 0 5.654 L 5.654 0 L 6.708 1.054 L 2.108 5.654 Z" fill="currentColor"></path></svg></div>
+          <div style="font-size:22px;font-weight:700;letter-spacing:-0.02em;white-space:nowrap">Vouchers</div>
+        </div>
+        <div style="align-self:flex-start;display:flex;background:#EDEDF2;border-radius:999px;padding:3px">
+          <sc-for list="{{ voucherTabs }}" as="t" hint-placeholder-count="2">
+            <div onClick="{{ t.pick }}" style="font-size:13px;font-weight:600;padding:8px 15px;border-radius:999px;background:{{ t.chipBg }};color:{{ t.fg }};box-shadow:{{ t.sh }};cursor:pointer;white-space:nowrap">{{ t.label }}</div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="padding:0 16px 26px;display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:13px;line-height:19px;color:#5B5B5D;padding-bottom:2px">{{ voucherHint }}</div>
+        <sc-for list="{{ vouchers }}" as="v" hint-placeholder-count="4">
+          <div onClick="{{ v.open }}" style="background:#fff;border-radius:18px;padding:12px;box-shadow:0 2px 4px rgba(0,0,0,.04);display:flex;align-items:center;gap:12px;cursor:pointer">
+            <div style="width:44px;height:44px;border-radius:12px;background:{{ v.color }};color:#FFFFFF;-webkit-text-fill-color:#FFFFFF;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:0 0 auto">{{ v.mark }}</div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:2px;min-width:0">
+              <div style="font-size:15px;font-weight:600">{{ v.brand }}</div>
+              <div style="font-size:12px;color:#5B5B5D">{{ v.meta }}</div>
+              <div style="font-size:11px;color:#A8A8A8">{{ v.exp }}</div>
+            </div>
+            <div style="background:{{ v.expBg }};color:{{ v.expFg }};font-size:12px;font-weight:700;padding:6px 10px;border-radius:999px;white-space:nowrap;flex:0 0 auto">{{ v.value }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isAdd }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Add to wallet" style="display:flex;flex-direction:column;flex:1">
+      <div style="background:#fff;padding:14px 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid #EFEEF4">
+        <div onClick="{{ goHome }}" style="cursor:pointer;color:#19151A;display:flex"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path transform="translate(8.346 6.346)" d="M 2.108 5.654 L 6.708 10.254 L 5.654 11.308 L 0 5.654 L 5.654 0 L 6.708 1.054 L 2.108 5.654 Z" fill="currentColor"></path></svg></div>
+        <div style="font-size:18px;font-weight:700;letter-spacing:-0.01em">Add to wallet</div>
+      </div>
+      <div style="padding:16px;display:flex;flex-direction:column;gap:12px">
+        <sc-for list="{{ addTypes }}" as="a" hint-placeholder-count="5">
+          <div onClick="{{ a.open }}" style="background:#fff;border-radius:20px;padding:18px;display:flex;align-items:center;gap:16px;box-shadow:0 2px 4px rgba(0,0,0,.04);cursor:pointer">
+            <div style="width:48px;height:48px;border-radius:999px;background:#EDEBF6;display:flex;align-items:center;justify-content:center;flex:0 0 auto"><div style="width:22px;height:22px;background:#6D5BF7;-webkit-mask:url({{ a.icon }}) center/contain no-repeat;mask:url({{ a.icon }}) center/contain no-repeat"></div></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:3px">
+              <div style="font-size:17px;font-weight:700;letter-spacing:-0.01em">{{ a.name }}</div>
+              <div style="font-size:13px;color:#5B5B5D;line-height:19px">{{ a.desc }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isActivity }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Activity" style="display:flex;flex-direction:column;flex:1;background:#F7F7F7">
+      <div style="background:#fff;padding:14px 16px 12px;display:flex;flex-direction:column;gap:12px;border-bottom:1px solid #EFEEF4">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div onClick="{{ goHome }}" style="cursor:pointer;color:#19151A;display:flex"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path transform="translate(8.346 6.346)" d="M 2.108 5.654 L 6.708 10.254 L 5.654 11.308 L 0 5.654 L 5.654 0 L 6.708 1.054 L 2.108 5.654 Z" fill="currentColor"></path></svg></div>
+          <div style="font-size:18px;font-weight:700;letter-spacing:-0.01em">Activity</div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;background:#F6F5FD;border-radius:12px;padding:10px 12px">
+          <div style="font-size:13px;color:#2A2461">Cashback earned this month</div>
+          <div style="font-size:15px;font-weight:700;color:#2A2461">+$18.40</div>
+        </div>
+      </div>
+      <div style="padding:14px 16px;display:flex;flex-direction:column;gap:14px">
+        <sc-for list="{{ txGroups }}" as="g" hint-placeholder-count="2">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5B5B5D">{{ g.label }}</div>
+            <div style="background:#fff;border-radius:16px;box-shadow:0 2px 4px rgba(0,0,0,.04);overflow:hidden">
+              <sc-for list="{{ g.items }}" as="t" hint-placeholder-count="3">
+                <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-bottom:1px solid #F1F0F5">
+                  <div style="width:32px;height:32px;border-radius:9px;background:{{ t.color }};color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center">{{ t.mark }}</div>
+                  <div style="flex:1;display:flex;flex-direction:column">
+                    <div style="font-size:14px;font-weight:600">{{ t.name }}</div>
+                    <div style="font-size:12px;color:#A8A8A8">{{ t.time }}</div>
+                  </div>
+                  <div style="display:flex;flex-direction:column;align-items:flex-end">
+                    <div style="font-size:14px;font-weight:700">{{ t.amount }}</div>
+                    <div style="font-size:11px;font-weight:400;color:#1EA472">{{ t.back }}</div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isRedeem }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Redemption" style="flex:1;background:#FBFBFC;display:flex;flex-direction:column;padding:20px;gap:18px">
+      <div onClick="{{ goBack }}" style="width:34px;height:34px;border-radius:999px;background:#EDEBF6;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#19151A"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path transform="translate(8.346 6.346)" d="M 2.108 5.654 L 6.708 10.254 L 5.654 11.308 L 0 5.654 L 5.654 0 L 6.708 1.054 L 2.108 5.654 Z" fill="currentColor"></path></svg></div>
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:18px">
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#737373">Show at the terminal</div>
+          <div style="font-size:26px;font-weight:700;letter-spacing:-0.02em;line-height:32px">{{ redeemTitle }}</div>
+        </div>
+        <div style="background:#fff;border:1px solid #EFEEF4;border-radius:22px;padding:22px;display:flex;flex-direction:column;align-items:center;gap:14px;box-shadow:0 2px 6px rgba(25,21,26,.05)">
+          <div style="width:100%;height:96px;background:repeating-linear-gradient(90deg,#19151A 0 2px,transparent 2px 5px,#19151A 5px 8px,transparent 8px 10px,#19151A 10px 11px,transparent 11px 15px,#19151A 15px 19px,transparent 19px 21px,#19151A 21px 22px,transparent 22px 26px)"></div>
+          <div style="color:#19151A;font-family:var(--font-mono);font-size:18px;letter-spacing:.14em">MCD-284719</div>
+          <div style="color:#737373;font-size:12px">Valid today · Register 02</div>
+        </div>
+        <div style="font-size:13px;line-height:19px;color:#5B5B5D">Cashback of <b>8%</b> is applied automatically when this payment settles.</div>
+      </div>
+      <div onClick="{{ goHome }}" style="background:#19151A;color:#fff;font-size:15px;font-weight:600;padding:15px;border-radius:999px;text-align:center;cursor:pointer">Done</div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ showFab }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ goAdd }}" style="position:sticky;bottom:22px;align-self:flex-end;flex:0 0 60px;box-sizing:border-box;margin:-82px 18px 22px 0;width:60px;height:60px;border-radius:999px;background:#FFFFFF;box-shadow:0 8px 20px rgba(25,21,26,.18);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:5">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path transform="translate(5.5 5.5)" d="M 5.75 7.25 L 0 7.25 L 0 5.75 L 5.75 5.75 L 5.75 0 L 7.25 0 L 7.25 5.75 L 13 5.75 L 13 7.25 L 7.25 7.25 L 7.25 13 L 5.75 13 L 5.75 7.25 Z" fill="#19151A"></path></svg>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isCashback }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Cashback" style="flex:1;background:#FBFBFC;display:flex;flex-direction:column">
+      <div style="padding:14px 22px 32px;display:flex;flex-direction:column;gap:26px;background:#FFCD00">
+        <div onClick="{{ goHome }}" style="width:34px;height:34px;border-radius:999px;background:rgba(25,21,26,.12);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#19151A"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path transform="translate(8.346 6.346)" d="M 2.108 5.654 L 6.708 10.254 L 5.654 11.308 L 0 5.654 L 5.654 0 L 6.708 1.054 L 2.108 5.654 Z" fill="currentColor"></path></svg></div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="font-size:14px;font-weight:500;color:#6B5A00">Cashback balance</div>
+          <div style="font-size:52px;line-height:56px;font-weight:500;letter-spacing:-0.035em;color:#19151A">$47.20</div>
+          <div style="font-size:13px;line-height:19px;font-weight:400;color:#5C4E06">{{ cashbackSub }}</div>
+        </div>
+      </div>
+
+      <sc-if value="{{ rdA }}" hint-placeholder-val="{{ true }}">
+        <div style="padding:30px 22px 34px;display:flex;flex-direction:column;gap:22px">
+          <div style="font-size:13px;font-weight:400;letter-spacing:.02em;color:#5B5B5D">Ways to redeem</div>
+
+          <div style="background:#fff;border:1px solid #F0EFF3;border-radius:22px;padding:22px;display:flex;flex-direction:column;gap:20px">
+            <div style="display:flex;align-items:center;gap:12px">
+              <div style="width:34px;height:34px;border-radius:10px;background:#EDEBFE;display:flex;align-items:center;justify-content:center;flex:0 0 auto">
+                <div style="width:18px;height:18px;background:#6D5BF7;-webkit-mask:url({{ planeIcon }}) center/contain no-repeat;mask:url({{ planeIcon }}) center/contain no-repeat"></div>
+              </div>
+              <div style="flex:1;display:flex;flex-direction:column;gap:1px">
+                <div style="font-size:15px;font-weight:500;color:#19151A">Arbitrip</div>
+                <div style="font-size:12px;font-weight:400;color:#5B5B5D">Vacation packages · 6% back · pick a trip</div>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <sc-for list="{{ trips }}" as="t" hint-placeholder-count="3">
+                <div onClick="{{ t.pick }}" style="border:1.5px solid {{ t.bd }};background:{{ t.bg }};border-radius:16px;padding:14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:border-color .2s ease,background .2s ease">
+                  <div style="width:18px;height:18px;border-radius:999px;border:1.5px solid {{ t.dot }};background:{{ t.dotFill }};flex:0 0 auto;display:flex;align-items:center;justify-content:center">
+                    <div style="width:7px;height:7px;border-radius:999px;background:{{ t.dotInner }}"></div>
+                  </div>
+                  <div style="flex:1;display:flex;flex-direction:column;gap:3px;min-width:0">
+                    <div style="font-size:15px;font-weight:500;color:#19151A">{{ t.name }}</div>
+                    <div style="font-size:12px;font-weight:400;color:#5B5B5D">{{ t.meta }}</div>
+                  </div>
+                  <div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px;flex:0 0 auto">
+                    <div style="font-size:15px;font-weight:500;color:#19151A;white-space:nowrap">{{ t.net }}</div>
+                    <div style="font-size:11px;font-weight:400;color:#5B5B5D;text-decoration:line-through;white-space:nowrap">{{ t.gross }}</div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:11px">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+                <div style="font-size:13px;font-weight:400;color:#5B5B5D;white-space:nowrap">Cashback applied</div>
+                <div style="font-size:14px;font-weight:500;color:#157A55;white-space:nowrap">−$47.20</div>
+              </div>
+              <div style="height:1px;background:#F0EFF3"></div>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+                <div style="font-size:13px;font-weight:400;color:#5B5B5D;white-space:nowrap">Left to pay</div>
+                <div style="font-size:14px;font-weight:500;color:#19151A;white-space:nowrap">{{ tripNet }}</div>
+              </div>
+            </div>
+
+            <div onClick="{{ goBooked }}" style="background:#19151A;color:#fff;font-size:15px;font-weight:500;padding:15px;border-radius:999px;text-align:center;cursor:pointer">{{ tripCta }}</div>
+            <div style="font-size:12px;line-height:18px;font-weight:400;color:#5B5B5D">Runs as a mini-app inside Wallet — nothing to download, no account to create.</div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:2px">
+            <div onClick="{{ goVouchers }}" style="padding:18px 2px;display:flex;align-items:center;gap:12px;border-bottom:1px solid #F0EFF3;cursor:pointer">
+              <div style="flex:1;display:flex;flex-direction:column;gap:3px">
+                <div style="font-size:15px;font-weight:500;color:#19151A">Spend at the terminal</div>
+                <div style="font-size:12px;font-weight:400;color:#5B5B5D">Use the balance on your next payment</div>
+              </div>
+              <div style="font-size:16px;color:#C4C2C9">›</div>
+            </div>
+            <div onClick="{{ goActivity }}" style="padding:18px 2px;display:flex;align-items:center;gap:12px;cursor:pointer">
+              <div style="flex:1;display:flex;flex-direction:column;gap:3px">
+                <div style="font-size:15px;font-weight:500;color:#19151A">See how it added up</div>
+                <div style="font-size:12px;font-weight:400;color:#5B5B5D">Cashback by transaction</div>
+              </div>
+              <div style="font-size:16px;color:#C4C2C9">›</div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ rdB }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:26px 20px 34px;display:flex;flex-direction:column;gap:22px">
+          <div style="font-size:13px;color:#5B5B5D">Choose a partner</div>
+          <div style="display:flex;gap:10px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;padding-bottom:2px">
+            <sc-for list="{{ partners }}" as="p" hint-placeholder-count="4">
+              <div onClick="{{ p.pick }}" style="flex:0 0 auto;box-sizing:border-box;width:112px;background:{{ p.bg }};border:1.5px solid {{ p.bd }};border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:10px;cursor:pointer;transition:border-color .2s ease">
+                <div style="width:36px;height:36px;border-radius:11px;background:{{ p.tint }};display:flex;align-items:center;justify-content:center">
+                  <div style="width:19px;height:19px;background:{{ p.ink }};-webkit-mask:url({{ p.icon }}) center/contain no-repeat;mask:url({{ p.icon }}) center/contain no-repeat"></div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:2px">
+                  <div style="font-size:14px;font-weight:600;color:#19151A">{{ p.name }}</div>
+                  <div style="font-size:12px;color:#5B5B5D">{{ p.rate }} back</div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="font-size:13px;color:#5B5B5D">{{ partnerHeading }}</div>
+            <sc-for list="{{ partnerOffers }}" as="o" hint-placeholder-count="3">
+              <div onClick="{{ o.go }}" style="background:#fff;border-radius:18px;padding:14px;display:flex;align-items:center;gap:12px;box-shadow:0 2px 4px rgba(25,21,26,.05);cursor:pointer">
+                <div style="flex:1;display:flex;flex-direction:column;gap:3px;min-width:0">
+                  <div style="font-size:15px;font-weight:600;color:#19151A">{{ o.name }}</div>
+                  <div style="font-size:12px;color:#5B5B5D">{{ o.meta }}</div>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px;flex:0 0 auto">
+                  <div style="font-size:15px;font-weight:600;color:{{ o.ink }};white-space:nowrap">{{ o.net }}</div>
+                  <div style="font-size:11px;color:#5B5B5D;text-decoration:line-through;white-space:nowrap">{{ o.gross }}</div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="background:{{ coversBg }};border-radius:18px;padding:16px 18px;display:flex;align-items:center;gap:12px">
+            <div style="flex:1;display:flex;flex-direction:column;gap:2px">
+              <div style="font-size:13px;color:rgba(255,255,255,.75)">Your $47.20 covers</div>
+              <div style="font-size:15px;font-weight:600;color:#fff">{{ coversLine }}</div>
+            </div>
+            <div style="width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;flex:0 0 auto">
+              <div style="width:18px;height:18px;background:#fff;-webkit-mask:url({{ coversIcon }}) center/contain no-repeat;mask:url({{ coversIcon }}) center/contain no-repeat"></div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ rdC }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:26px 20px 34px;display:flex;flex-direction:column;gap:24px">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="font-size:13px;color:#5B5B5D">How much to use</div>
+            <div style="display:flex;gap:8px">
+              <sc-for list="{{ amounts }}" as="a" hint-placeholder-count="3">
+                <div onClick="{{ a.pick }}" style="flex:1;background:{{ a.bg }};border:1.5px solid {{ a.bd }};border-radius:14px;padding:13px 8px;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;transition:border-color .2s ease,background .2s ease">
+                  <div style="font-size:16px;font-weight:600;color:{{ a.fg }};white-space:nowrap">{{ a.label }}</div>
+                  <div style="font-size:11px;color:{{ a.sub }};white-space:nowrap">{{ a.note }}</div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="font-size:13px;color:#5B5B5D">Spend it on</div>
+            <sc-for list="{{ destinations }}" as="d" hint-placeholder-count="4">
+              <div onClick="{{ d.go }}" style="background:#fff;border-radius:18px;padding:13px;display:flex;align-items:center;gap:12px;box-shadow:0 2px 4px rgba(25,21,26,.05);cursor:pointer">
+                <div style="width:40px;height:40px;border-radius:12px;background:{{ d.tint }};display:flex;align-items:center;justify-content:center;flex:0 0 auto">
+                  <div style="width:20px;height:20px;background:{{ d.ink }};-webkit-mask:url({{ d.icon }}) center/contain no-repeat;mask:url({{ d.icon }}) center/contain no-repeat"></div>
+                </div>
+                <div style="flex:1;display:flex;flex-direction:column;gap:2px;min-width:0">
+                  <div style="font-size:15px;font-weight:600;color:#19151A">{{ d.name }}</div>
+                  <div style="font-size:12px;color:#5B5B5D">{{ d.meta }}</div>
+                </div>
+                <div style="font-size:14px;font-weight:600;color:#19151A;white-space:nowrap;flex:0 0 auto">{{ d.value }}</div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:12px;padding-top:2px">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+              <div style="font-size:13px;color:#5B5B5D;white-space:nowrap">Applying</div>
+              <div style="font-size:14px;font-weight:600;color:#157A55;white-space:nowrap">{{ applyLabel }}</div>
+            </div>
+            <div onClick="{{ goBooked }}" style="background:#19151A;color:#fff;font-size:15px;font-weight:600;padding:15px;border-radius:999px;text-align:center;cursor:pointer">Continue</div>
+            <div style="font-size:12px;line-height:18px;color:#5B5B5D">The rest of your balance stays in the wallet and keeps earning.</div>
+          </div>
+        </div>
+      </sc-if>
+
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isBooked }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Booking confirmed" style="flex:1;background:#F7F7F7;display:flex;flex-direction:column">
+      <div style="background:{{ tripHeaderBg }};padding:14px 20px 26px;display:flex;flex-direction:column;gap:20px">
+        <div onClick="{{ goCashback }}" style="width:34px;height:34px;border-radius:999px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path transform="translate(8.346 6.346)" d="M 2.108 5.654 L 6.708 10.254 L 5.654 11.308 L 0 5.654 L 5.654 0 L 6.708 1.054 L 2.108 5.654 Z" fill="currentColor"></path></svg></div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75)">{{ tripEyebrow }}</div>
+          <div style="font-size:28px;line-height:34px;font-weight:700;letter-spacing:-0.02em;color:#fff">{{ tripName }}</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.8)">{{ tripRef }}</div>
+        </div>
+      </div>
+      <div style="padding:18px 16px 26px;display:flex;flex-direction:column;gap:14px">
+        <div style="background:#fff;border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:12px;box-shadow:0 2px 6px rgba(25,21,26,.06)">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div style="font-size:13px;color:#5B5B5D">{{ tripTotalLabel }}</div>
+            <div style="font-size:14px;font-weight:600">{{ tripGross }}</div>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div style="font-size:13px;color:#5B5B5D">Cashback used</div>
+            <div style="font-size:14px;font-weight:700;color:#1EA472">{{ tripUsed }}</div>
+          </div>
+          <div style="height:1px;background:#F1F0F5"></div>
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div style="font-size:14px;font-weight:600">Charged to your card</div>
+            <div style="font-size:20px;font-weight:700;letter-spacing:-0.01em">{{ tripNet }}</div>
+          </div>
+          <div style="background:#F1F0F5;border-radius:12px;padding:11px 13px;display:flex;align-items:center;justify-content:space-between">
+            <div style="font-size:13px;color:#19151A">{{ tripBackLabel }}</div>
+            <div style="font-size:14px;font-weight:700;color:#2A2461">{{ tripBack }}</div>
+          </div>
+          <div style="font-size:12px;color:#737373;line-height:17px">{{ tripNote }}</div>
+        </div>
+        <div onClick="{{ goVouchers }}" style="background:#fff;border-radius:18px;padding:14px;display:flex;align-items:center;gap:12px;box-shadow:0 2px 4px rgba(25,21,26,.05);cursor:pointer">
+          <div style="flex:1;display:flex;flex-direction:column;gap:1px">
+            <div style="font-size:14px;font-weight:600">{{ tripAddedTitle }}</div>
+            <div style="font-size:12px;color:#737373">{{ tripAddedMeta }}</div>
+          </div>
+          <div style="font-size:16px;color:#A8A8A8">›</div>
+        </div>
+        <div onClick="{{ goHome }}" style="background:#19151A;color:#fff;font-size:15px;font-weight:600;padding:14px;border-radius:999px;text-align:center;cursor:pointer">Done</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ searchOpen }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Search" style="position:absolute;inset:0;background:#F7F7F7;display:flex;flex-direction:column;z-index:9">
+      <div style="background:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #EDEDED">
+        <div onClick="{{ closeSearch }}" style="width:32px;height:32px;border-radius:999px;background:#F1F0F5;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:0 0 auto;color:#19151A"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path transform="translate(8.346 6.346)" d="M 2.108 5.654 L 6.708 10.254 L 5.654 11.308 L 0 5.654 L 5.654 0 L 6.708 1.054 L 2.108 5.654 Z" fill="currentColor"></path></svg></div>
+        <div style="flex:1;display:flex;align-items:center;gap:9px;background:#F1F0F5;border-radius:12px;padding:9px 12px">
+          <div style="width:17px;height:17px;background:#737373;-webkit-mask:url({{ searchIcon }}) center/contain no-repeat;mask:url({{ searchIcon }}) center/contain no-repeat;flex:0 0 auto"></div>
+          <input ref="{{ searchRef }}" value="{{ searchQuery }}" onChange="{{ onSearch }}" placeholder="Search brands, offers or cards" style="flex:1;border:none;outline:none;background:transparent;font-family:inherit;font-size:14px;color:#19151A;min-width:0" />
+        </div>
+      </div>
+      <div style="flex:1;overflow-y:auto;padding:14px 16px 24px;display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#737373">{{ searchHeading }}</div>
+        <sc-for list="{{ searchResults }}" as="r" hint-placeholder-count="4">
+          <div onClick="{{ r.open }}" style="background:#fff;border-radius:16px;padding:12px;display:flex;align-items:center;gap:12px;box-shadow:0 2px 4px rgba(0,0,0,.04);cursor:pointer">
+            <div style="width:40px;height:40px;border-radius:12px;background:{{ r.color }};color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:0 0 auto">{{ r.mark }}</div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:1px">
+              <div style="font-size:15px;font-weight:600">{{ r.name }}</div>
+              <div style="font-size:12px;color:#737373">{{ r.desc }}</div>
+            </div>
+            <div style="font-size:14px;font-weight:700;color:#2A2461">{{ r.rate }}</div>
+          </div>
+        </sc-for>
+        <sc-if value="{{ searchEmpty }}" hint-placeholder-val="{{ false }}">
+          <div style="font-size:13px;color:#737373;padding:8px 2px">No brands match that. Try a category like food or travel.</div>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeMenu }}" style="position:absolute;inset:0;background:rgba(25,21,26,.42);display:flex;flex-direction:column;justify-content:flex-end;z-index:9;cursor:pointer">
+      <div style="background:#fff;border-radius:26px 26px 0 0;padding:18px 18px 26px;display:flex;flex-direction:column;gap:16px">
+        <div style="width:38px;height:4px;border-radius:999px;background:#E0E0E0;align-self:center"></div>
+        <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5B5B5D">Recent transactions</div>
+        <div style="display:flex;flex-direction:column">
+          <sc-for list="{{ menuTx }}" as="t" hint-placeholder-count="3">
+            <div style="display:flex;align-items:center;gap:12px;padding:15px 0;border-bottom:{{ t.bd }}">
+              <div style="width:32px;height:32px;border-radius:9px;background:{{ t.color }};color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:0 0 auto">{{ t.mark }}</div>
+              <div style="flex:1;display:flex;flex-direction:column">
+                <div style="font-size:14px;font-weight:600">{{ t.name }}</div>
+                <div style="font-size:12px;color:#A8A8A8">{{ t.time }}</div>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:flex-end">
+                <div style="font-size:14px;font-weight:700">{{ t.amount }}</div>
+                <div style="font-size:11px;font-weight:400;color:#1EA472">{{ t.back }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div onClick="{{ goActivity }}" style="align-self:flex-end;font-size:13px;font-weight:600;color:#5F4BF5;cursor:pointer">More transactions</div>
+        <div style="height:1px;background:#EFEEF4"></div>
+        <sc-for list="{{ menuLinks }}" as="l" hint-placeholder-count="3">
+          <div onClick="{{ l.go }}" style="display:flex;align-items:center;gap:12px;cursor:pointer;padding:8px 0">
+            <div style="width:36px;height:36px;border-radius:999px;background:#EDEBF6;display:flex;align-items:center;justify-content:center;flex:0 0 auto">
+              <div style="width:18px;height:18px;background:#6D5BF7;-webkit-mask:url({{ l.icon }}) center/contain no-repeat;mask:url({{ l.icon }}) center/contain no-repeat"></div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column">
+              <div style="font-size:15px;font-weight:600">{{ l.name }}</div>
+              <div style="font-size:12px;color:#737373">{{ l.desc }}</div>
+            </div>
+            <div style="color:#A8A8A8;display:flex"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path transform="translate(8.346 6.346)" d="M 4.6 5.654 L 0 1.054 L 1.054 0 L 6.708 5.654 L 1.054 11.308 L 0 10.254 L 4.6 5.654 Z" fill="currentColor"></path></svg></div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:390,&quot;height&quot;:844},&quot;mode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;A&quot;,&quot;B&quot;,&quot;C&quot;],&quot;default&quot;:&quot;A&quot;,&quot;tsType&quot;:&quot;'A'|'B'|'C'&quot;},&quot;cardSet&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;nayax&quot;,&quot;selecta&quot;],&quot;default&quot;:&quot;nayax&quot;,&quot;tsType&quot;:&quot;'nayax'|'selecta'&quot;},&quot;redeemStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;A&quot;,&quot;B&quot;,&quot;C&quot;],&quot;default&quot;:&quot;A&quot;,&quot;tsType&quot;:&quot;'A'|'B'|'C'&quot;,&quot;section&quot;:&quot;Cashback screen&quot;}}">
+const C = { red:'#CC2B42', green:'#1EA472', purple:'#6D5BF7', deep:'#2A2461', ink:'#19151A', blue:'#3F34A8', slate:'#5B5B5D', plum:'#8A38F5' };
+
+const BRANDS = [
+  { id:'mixue', name:"McDonald's", mark:'MC', color:C.red, cat:'Food & drink', rate:'8%', desc:'Burgers, fries & coffee', meta:'At this terminal · Register 02', tag:'AT THIS VENUE',
+    perks:['A free side with any meal, today only','8% back on every payment, credited instantly','Order ahead and skip the queue at Register 02'] },
+  { id:'starbucks', name:'Starbucks', mark:'SB', color:'#1E6B4F', cat:'Coffee', rate:'5%', desc:'Order ahead & refills', meta:'42 m · Level 2', tag:'NEARBY',
+    perks:['5% back on every order paid with Nayax Pay','Stars sync automatically to your loyalty card','Reorder your last drink in two taps'] },
+  { id:'zara', name:'Zara', mark:'ZR', color:C.ink, cat:'Fashion', rate:'6%', desc:'Store credit & returns', meta:'80 m · Level 1', tag:'NEARBY',
+    perks:['6% back on full-price items','Store credit lands in your wallet, not on paper','Track returns without the receipt'] },
+  { id:'uber', name:'Bolt', mark:'BL', color:C.ink, cat:'Transport', rate:'3%', desc:'Rides from this location', meta:'Pickup outside North entrance', tag:'IN THIS CITY',
+    perks:['3% back on every ride','Pay with your Nayax cashback balance','Trip receipts filed into Activity'] },
+  { id:'booking', name:'Booking', mark:'BK', color:C.blue, cat:'Travel', rate:'4%', desc:'Family stays & packages', meta:'Trips you have coming up', tag:'IN THIS CITY',
+    perks:['4% back on stays booked in the mini-app','Cancel free up to 24 h before check-in','Your Delta trip dates are pre-filled'] },
+  { id:'groupon', name:'Groupon', mark:'GP', color:'#4E8A1E', cat:'Deals', rate:'7%', desc:'Local deals near you', meta:'11 deals within 300 m', tag:'NEARBY',
+    perks:['7% back on local deals','Vouchers land straight in your wallet','No printouts, no codes to type'] },
+  { id:'inkind', name:'inKind', mark:'IK', color:C.plum, cat:'Dining', rate:'10%', desc:'Restaurant credit', meta:'6 restaurants nearby', tag:'NEARBY',
+    perks:['10% back when you buy dining credit','Credit never expires','Works at 6 restaurants in this mall'] },
+  { id:'balenciaga', name:'Balenciaga', mark:'BA', color:'#19151A', cat:'Fashion', rate:'8%', desc:'Runway pieces & leather goods', meta:'Flagship store · Level 1', tag:'NEARBY',
+    perks:['8% back on full-price pieces','Private appointments bookable in the mini-app','Returns become wallet credit'] },
+  { id:'eataly', name:'Eataly', mark:'EA', color:'#1E6B4F', cat:'Dining', rate:'9%', desc:'Italian market & restaurants', meta:'Market hall · Level 2', tag:'NEARBY',
+    perks:['9% back across the market and restaurants','Skip the queue at the pasta counter','Cooking classes bookable with cashback'] },
+  { id:'nike', name:'Nike', mark:'NK', color:'#19151A', cat:'Fashion', rate:'6%', desc:'Sportswear & member drops', meta:'Store on Level 1', tag:'NEARBY',
+    perks:['6% back on full-price items','Member drops open early in the mini-app','Returns become wallet credit, not paper'] },
+  { id:'mindbody', name:'MindBody', mark:'MB', color:C.purple, cat:'Fitness', rate:'5%', desc:'Classes & memberships', meta:'Studio on Level 3', tag:'NEARBY',
+    perks:['5% back on classes and memberships','Class pass shows up as a wallet card','Book from the wallet, no app install'] },
+];
+
+const BLANK = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+
+class Component extends DCLogic {
+  state = { screen:'home', brand:BRANDS[0], back:'home', chip:'All', tab:'home', statIdx:0, statOn:true };
+
+  constructor(props) {
+    super(props);
+    if (props.startScreen) this.state = Object.assign({}, this.state, { screen: props.startScreen });
+  }
+
+  ICONS = {
+    card: 'data:image/svg+xml;utf8,' + encodeURIComponent("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"6\" width=\"18\" height=\"12\" rx=\"3\"/><path d=\"M3 10.5h18M6.5 14.5h3\"/></svg>"),
+    list: 'data:image/svg+xml;utf8,' + encodeURIComponent("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 7h16M4 12h16M4 17h10\"/></svg>"),
+    ticket: 'data:image/svg+xml;utf8,' + encodeURIComponent("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 8.6A1.6 1.6 0 0 1 5.6 7h12.8A1.6 1.6 0 0 1 20 8.6v1.8a2 2 0 0 0 0 3.2v1.8A1.6 1.6 0 0 1 18.4 17H5.6A1.6 1.6 0 0 1 4 15.4v-1.8a2 2 0 0 0 0-3.2V8.6Z\"/><path d=\"M12 9.4v5.2\"/></svg>"),
+    coins: 'data:image/svg+xml;utf8,' + encodeURIComponent("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"10\" cy=\"10\" r=\"5.4\"/><path d=\"M13.6 5.4A5.4 5.4 0 1 1 14 18.5\"/><path d=\"M10 7.8v4.4M8.4 9.2h3.2\"/></svg>"),
+    cardPlus: 'data:image/svg+xml;utf8,' + encodeURIComponent("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 12.4V8.4a2.4 2.4 0 0 0-2.4-2.4H5.4A2.4 2.4 0 0 0 3 8.4v7.2A2.4 2.4 0 0 0 5.4 18h7.2\"/><path d=\"M3 10.4h18\"/><path d=\"M17.6 14.4v5.2M15 17h5.2\"/></svg>"),
+    burger: 'data:image/svg+xml;utf8,' + encodeURIComponent("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 9.4a8 8 0 0 1 16 0Z\"/><path d=\"M3.6 12.4h16.8\"/><path d=\"M4 15.4h16a4 4 0 0 1-4 3.2H8a4 4 0 0 1-4-3.2Z\"/></svg>"),
+    shoe: 'data:image/svg+xml;utf8,' + encodeURIComponent("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2.6 16.4v-3.1a.9.9 0 0 1 1.2-.85l3.6 1.2 3-3.05 3.3 1.6 5.6 1.5a2.2 2.2 0 0 1 1.7 2.14v.56a1.4 1.4 0 0 1-1.4 1.4H4a1.4 1.4 0 0 1-1.4-1.4Z\"/><path d=\"M7.4 13.65 6.2 9.4a1 1 0 0 1 1.35-1.2l2.05.85\"/><path d=\"M10.4 10.6l2.6 1.05\"/></svg>"),
+    star: 'data:image/svg+xml;utf8,' + encodeURIComponent("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 4.6l2.3 4.7 5.1.7-3.7 3.6.9 5.1-4.6-2.4-4.6 2.4.9-5.1L4.6 10l5.1-.7L12 4.6Z\"/></svg>"),
+    pin: 'data:image/svg+xml;utf8,' + encodeURIComponent("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 21c3.6-4.4 5.4-7.5 5.4-9.9A5.4 5.4 0 0 0 6.6 11.1c0 2.4 1.8 5.5 5.4 9.9Z\"/><circle cx=\"12\" cy=\"10.8\" r=\"2.1\"/></svg>"),
+    camera: 'data:image/svg+xml;utf8,' + encodeURIComponent("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3.4\" y=\"7.4\" width=\"17.2\" height=\"11.2\" rx=\"3\"/><circle cx=\"12\" cy=\"13\" r=\"3.2\"/><path d=\"M9 7.4l1.2-2h3.6l1.2 2\"/></svg>"),
+    plane: 'data:image/svg+xml;utf8,' + encodeURIComponent("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M11 4.6a1.1 1.1 0 0 1 2.2 0v4.6l6.4 3.8v1.8l-6.4-2v3.5l2 1.5v1.2l-3.1-.9-3.1.9v-1.2l2-1.5v-3.5l-6.4 2v-1.8L11 9.2V4.6Z\"/></svg>"),
+    search: 'data:image/svg+xml;utf8,' + encodeURIComponent("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"6\"/><path d=\"M15.6 15.6 20 20\"/></svg>"),
+    cup: 'data:image/svg+xml;utf8,' + encodeURIComponent("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 8h11v6a5 5 0 0 1-5 5H10a5 5 0 0 1-5-5V8Z\"/><path d=\"M16 9.5h1.8a2.7 2.7 0 0 1 0 5.4H16\"/><path d=\"M7.5 4.6c.9.7.9 1.4 0 2.1M11 4.6c.9.7.9 1.4 0 2.1\"/></svg>"),
+    car: 'data:image/svg+xml;utf8,' + encodeURIComponent("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4.5 15.5v2.2a.8.8 0 0 0 .8.8h1.4a.8.8 0 0 0 .8-.8v-1.2\"/><path d=\"M19.5 15.5v2.2a.8.8 0 0 1-.8.8h-1.4a.8.8 0 0 1-.8-.8v-1.2\"/><path d=\"M3.6 12.2 5.3 7.4A2.4 2.4 0 0 1 7.6 5.8h8.8a2.4 2.4 0 0 1 2.3 1.6l1.7 4.8\"/><rect x=\"3.6\" y=\"12.2\" width=\"16.8\" height=\"4.3\" rx=\"1.8\"/></svg>"),
+    store: 'data:image/svg+xml;utf8,' + encodeURIComponent("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4.6 9.8V17a1.6 1.6 0 0 0 1.6 1.6h11.6A1.6 1.6 0 0 0 19.4 17V9.8\"/><path d=\"M3.4 9.8h17.2l-1.3-3.6a1.6 1.6 0 0 0-1.5-1H6.2a1.6 1.6 0 0 0-1.5 1L3.4 9.8Z\"/><path d=\"M9.6 18.6v-4.4h4.8v4.4\"/></svg>"),
+    spa: 'data:image/svg+xml;utf8,' + encodeURIComponent("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 12.4c0-3 1.6-5.6 4-7-.4 3-1.8 5.5-4 7Z\"/><path d=\"M12 12.4c0-3-1.6-5.6-4-7 .4 3 1.8 5.5 4 7Z\"/><path d=\"M4.6 13.6c3.6 4.6 11.2 4.6 14.8 0\"/></svg>"),
+  };
+
+  ic(n) { const v = this.ICONS[n] || n; return v.split('data:image/svg+xml;utf8,').join('data:image/svg+xml,'); }
+
+  stats = [
+    { value:'$132.20', label:'cashback earned', icon: this.ic('coins'), color:'#1EA472' },
+    { value:'12,480', label:'Delta SkyMiles', icon: this.ic('plane'), color:'#737373' },
+  ];
+
+  componentDidMount() {
+    import('./burger-image.js').then(m => this.setState({ burger: m.BURGER }));
+    if (this.props.cardSet !== 'selecta') {
+      import('./nayax-cards.js').then(m => this.setState({ nayaxCard: m.NAYAX_CARD, bizCard: m.BUSINESS_CARD }));
+    }
+    if (this.props.cardSet === 'selecta') {
+      import('./selecta-card.js').then(m => this.setState({ selectaCard: m.SELECTA_CARD }));
+    }
+    this.timer = setInterval(() => {
+      this.setState({ statOn:false });
+      setTimeout(() => this.setState(s => ({ statIdx:(s.statIdx + 1) % this.stats.length, statOn:true })), 700);
+    }, 5200);
+  }
+  componentWillUnmount() { clearInterval(this.timer); }
+
+  go = (screen, extra) => () => this.setState(Object.assign({ screen }, extra || {}));
+  openBrand = (b) => () => this.setState({ screen:'brand', brand:b, back:this.state.screen });
+
+  renderVals() {
+    const s = this.state;
+    const mode = this.props.mode || 'A';
+    const single = this.props.cardSet === 'selecta';
+    const brandWord = 'Nayax';
+    const TRIPS = [
+      { id:'bcn', name:'Barcelona', meta:'4 nights · flights included', gross:'$660.00', net:'$612.80', back:'+$36.77', ref:'ARB-90412' },
+      { id:'crete', name:'Crete', meta:'5 nights · all inclusive', gross:'$845.00', net:'$797.80', back:'+$47.87', ref:'ARB-90418' },
+      { id:'rome', name:'Rome', meta:'3 nights · city break', gross:'$430.00', net:'$382.80', back:'+$22.97', ref:'ARB-90423' },
+      { id:'dubai', name:'Dubai', meta:'5 nights · 4-star resort', gross:'$1,120.00', net:'$1,072.80', back:'+$64.37', ref:'ARB-90431' },
+    ];
+    const rd = this.props.redeemStyle || 'A';
+    const o2 = this.state.offer2;
+    const fmt = (n) => '$' + n.toFixed(2);
+    const BAL = 47.20;
+
+    const PARTNERS = [
+      { id:'arbitrip', name:'Arbitrip', rate:'6%', pct:0.06, code:'ARB', travel:true, icon: this.ic('plane'), tint:'#EDEBFE', ink:'#6D5BF7',
+        heading:'Vacation packages', covers:'11% of the Rome city break',
+        offers:[
+          { name:'Barcelona', meta:'4 nights · flights included', gross:'$660.00', net:'$612.80' },
+          { name:'Rome', meta:'3 nights · city break', gross:'$430.00', net:'$382.80' },
+          { name:'Crete', meta:'5 nights · all inclusive', gross:'$845.00', net:'$797.80' },
+        ] },
+      { id:'bolt', name:'Bolt', rate:'3%', pct:0.03, code:'BLT', icon: this.ic('car'), tint:'#EDECEF', ink:'#19151A',
+        heading:'Ride credit', covers:'about 9 rides across town',
+        offers:[
+          { name:'$20 ride credit', meta:'No expiry', gross:'$20.00', net:'$0.00' },
+          { name:'$50 ride credit', meta:'No expiry', gross:'$50.00', net:'$2.80' },
+          { name:'Airport transfer', meta:'Fixed fare', gross:'$38.00', net:'$0.00' },
+        ] },
+      { id:'nike', name:'Nike', rate:'6%', pct:0.06, code:'NKE', icon: this.ic('shoe'), tint:'#EDECEF', ink:'#19151A',
+        heading:'Members-only drops', covers:'a third off the Pegasus 41',
+        offers:[
+          { name:'Pegasus 41', meta:'Running · member price', gross:'$135.00', net:'$87.80' },
+          { name:'Tech Fleece hoodie', meta:'Apparel', gross:'$110.00', net:'$62.80' },
+          { name:'$25 store credit', meta:'Any purchase', gross:'$25.00', net:'$0.00' },
+        ] },
+      { id:'mcd', name:"McDonald's", rate:'8%', pct:0.08, code:'MCD', icon: this.ic('burger'), tint:'#FBE9EC', ink:'#CC2B42',
+        heading:'Meals near you', covers:'roughly 6 meals at this location',
+        offers:[
+          { name:'Big Mac meal', meta:'Register 02 · today', gross:'$8.90', net:'$0.00' },
+          { name:'$20 meal credit', meta:"Any McDonald's", gross:'$20.00', net:'$0.00' },
+          { name:'Breakfast for two', meta:'Before 11 AM', gross:'$12.40', net:'$0.00' },
+        ] },
+    ];
+    const partnerId = this.state.partner || 'arbitrip';
+    const pickedPartner = PARTNERS.filter(p => p.id === partnerId)[0];
+    const partnerDefs = PARTNERS.map(p => {
+      const on = p.id === partnerId;
+      return Object.assign({}, p, {
+        bg: on ? p.tint : '#fff',
+        bd: on ? p.ink : '#EDEDF2',
+        pick: () => this.setState({ partner: p.id }),
+      });
+    });
+
+    const AMTS = [
+      { id:'all', amt:BAL, label:'All', note:fmt(BAL) },
+      { id:'half', amt:25, label:'$25', note:'keep $22.20' },
+      { id:'ten', amt:10, label:'$10', note:'keep $37.20' },
+    ];
+    const amtId = this.state.amt || 'all';
+    const applyAmt = (AMTS.filter(a => a.id === amtId)[0] || AMTS[0]).amt;
+    const amountDefs = AMTS.map(a => {
+      const on = a.id === amtId;
+      return Object.assign({}, a, {
+        bg: on ? '#19151A' : '#fff',
+        bd: on ? '#19151A' : '#F0EFF3',
+        fg: on ? '#fff' : '#19151A',
+        sub: on ? '#B9B7BE' : '#5B5B5D',
+        pick: () => this.setState({ amt: a.id }),
+      });
+    });
+    const destDefs = [
+      { name:'Arbitrip', meta:'Vacation packages · 6% back', value:'From $382', icon: this.ic('plane'), tint:'#EDEBFE', ink:'#6D5BF7', go: this.go('booked') },
+      { name:'Bolt', meta:'Ride credit · 3% back', value:'$20 free', icon: this.ic('car'), tint:'#EDECEF', ink:'#19151A', go: this.go('booked') },
+      { name:'Nike', meta:'Member drops · 6% back', value:'From $62', icon: this.ic('shoe'), tint:'#EDECEF', ink:'#19151A', go: this.go('booked') },
+      { name:'At the terminal', meta:'Your next payment, anywhere', value:'Instant', icon: this.ic('card'), tint:'#F4F3F7', ink:'#19151A', go: this.go('vouchers') },
+    ];
+
+    const money = (v) => Number(String(v).replace(/[^0-9.]/g, '')) || 0;
+    let conf = null;
+    if (o2) {
+      const price = money(o2.gross);
+      const used = Math.min(BAL, price);
+      conf = {
+        title: o2.name,
+        sub: o2.p.name + ' · ' + o2.meta + ' · ref ' + o2.ref,
+        gross: o2.gross,
+        used: '−' + fmt(used),
+        net: fmt(price - used),
+        back: '+' + fmt(price * o2.p.pct),
+        note: o2.p.rate + ' funded by ' + o2.p.name + ', credited once the payment settles.'
+          + (used < BAL ? ' ' + fmt(BAL - used) + ' stays in your wallet.' : ''),
+        eyebrow: o2.p.travel ? 'Booking confirmed' : 'Redemption confirmed',
+        addedTitle: o2.p.travel ? 'Trip added to your wallet' : 'Added to your wallet',
+        addedMeta: o2.p.travel ? 'Vouchers & credit · booking reference and hotel details' : 'Vouchers & credit · reference and terms',
+        header: o2.p.ink,
+        totalLabel: o2.p.travel ? 'Package total' : 'Item total',
+      };
+    }
+
+    const tripId = this.state.trip || 'bcn';
+    const pickedTrip = TRIPS.filter(t => t.id === tripId)[0] || TRIPS[0];
+    const tripDefs = TRIPS.map(t => {
+      const on = t.id === tripId;
+      return Object.assign({}, t, {
+        bd: on ? '#19151A' : '#F0EFF3',
+        bg: on ? '#FBFBFC' : '#FFFFFF',
+        dot: on ? '#19151A' : '#C4C2C9',
+        dotFill: 'transparent',
+        dotInner: on ? '#19151A' : 'transparent',
+        pick: () => this.setState({ trip: t.id }),
+      });
+    });
+    const baseCashback = { name:'2% on every purchase', meta:'Always on, with your ' + brandWord + ' card', rate:'2%', mark:'N', color:'#19151A', open: this.go('cashback'),
+      rowBg:'#FFCD00', markColor:'#FFCD00', nameColor:'#19151A', metaColor:'#6B5A00', rateBg:'#19151A', rateColor:'#FFCD00' };
+    const q = (this.state.q || '').trim().toLowerCase();
+    const hits = q
+      ? BRANDS.filter(x => (x.name + ' ' + x.cat + ' ' + x.desc).toLowerCase().indexOf(q) > -1)
+      : BRANDS.slice(0, 4);
+    const searchHits = hits.map(x => Object.assign({}, x, { open: () => { this.setState({ search:false, q:'' }); this.openBrand(x)(); } }));
+    const b = s.brand || BRANDS[0];
+    const rowSkin = { rowBg:'#fff', markColor:'#FFFFFF', nameColor:'#19151A', metaColor:'#5B5B5D', rateBg:'#F6F5FD', rateColor:'#2A2461' };
+    const withOpen = (arr) => arr.map(x => Object.assign({}, rowSkin, x, { open: this.openBrand(x) }));
+
+    const chipLabels = ['All', 'Food & drink', 'Travel', 'Fashion', 'Transport'];
+    const chips = chipLabels.map(l => ({
+      label: l,
+      bg: l === s.chip ? '#19151A' : '#FFFFFF',
+      fg: l === s.chip ? '#FFFFFF' : '#5B5B5D',
+      pick: () => this.setState({ chip: l }),
+    }));
+    const filtered = s.chip === 'All' ? BRANDS : BRANDS.filter(x => x.cat === s.chip || (s.chip === 'Food & drink' && (x.cat === 'Coffee' || x.cat === 'Dining')));
+
+    const group = (label, ids) => ({ label, items: withOpen(BRANDS.filter(x => ids.indexOf(x.id) > -1)) });
+
+    const hTab = s.htab || 'suggested';
+    const vTab = s.vtab || 'discount';
+    const discountV = [
+      { brand:'GAP', mark:'GP', color:C.blue, value:'20% OFF', meta:'Any purchase · Register 02', code:'GAP-4471', exp:'14 days', expBg:'#F6F5FD', expFg:'#2A2461' },
+      { brand:'Walmart', mark:'WM', color:'#1E6B4F', value:'$10.00', meta:'Min. purchase $50', code:'WMT-1092', exp:'30 days', expBg:'#F6F5FD', expFg:'#2A2461' },
+      { brand:'Target', mark:'TG', color:C.red, value:'15% OFF', meta:'Single item · Register 07', code:'TGT-8834', exp:'2 days left', expBg:'#FFFEB2', expFg:'#8A6E00' },
+      { brand:'Best Buy', mark:'BB', color:C.ink, value:'$25.00', meta:'Electronics only', code:'BBY-5521', exp:'10 days', expBg:'#F6F5FD', expFg:'#2A2461' },
+    ];
+    const creditV = [
+      { brand:'Zara', mark:'ZR', color:C.ink, value:'$25.00', meta:'Returned 07/26 · Register 04', code:'ZRA-6602', exp:'No expiry', expBg:'#F6F5FD', expFg:'#2A2461' },
+      { brand:'Old Navy', mark:'ON', color:C.blue, value:'$10.00', meta:'Returned 07/24 · Register 11', code:'ONV-2287', exp:'No expiry', expBg:'#F6F5FD', expFg:'#2A2461' },
+    ];
+    const vList = (vTab === 'discount' ? discountV : creditV).map(v => Object.assign({}, v, { open: this.go('redeem', { back:'vouchers' }) }));
+
+    const tabDefs = [
+      { key:'home', label:'Wallet', icon: this.ic('card'), screen:'home' },
+      { key:'market', label:'Discover', icon: this.ic('store'), screen:'market' },
+      { key:'vouchers', label:'Vouchers', icon: this.ic('ticket'), screen:'vouchers' },
+      { key:'activity', label:'Activity', icon: this.ic('list'), screen:'activity' },
+    ];
+
+    return {
+      mA: mode === 'A', mB: mode === 'B', mC: mode === 'C',
+      isHome: s.screen === 'home', isMarket: s.screen === 'market', isBrand: s.screen === 'brand',
+      nayaxCardImg: (single ? this.state.selectaCard : this.state.nayaxCard) || BLANK,
+      businessCardImg: this.state.bizCard || BLANK,
+      backDisplay: single ? 'none' : 'flex',
+      stackPadRight: single ? '0px' : '24px',
+      burgerImg: s.burger || 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
+      searchIcon: this.ic('search'),
+      planeIcon: this.ic('plane'),
+      isOffer: !!s.offer,
+      closeOffer: () => this.setState({ offer:false }), isVouchers: s.screen === 'vouchers', isAdd: s.screen === 'add',
+      isActivity: s.screen === 'activity', isRedeem: s.screen === 'redeem',
+      frontIsNayax: single || s.card !== 'delta',
+      frontIsDelta: !single && s.card === 'delta',
+      backBg: s.card === 'delta' ? '#B9B7BE' : '#F2E600',
+      backLabel: s.card === 'delta' ? 'Nayax Pay' : 'Business',
+      backLabelColor: s.card === 'delta' ? 'rgba(255,255,255,.9)' : '#19151A',
+      switchCard: () => this.setState(st => ({ card: st.card === 'delta' ? 'nayax' : 'delta' })),
+      showFab: false,
+      trips: tripDefs, tripCta: 'Redeem with Arbitrip',
+      tripNet: conf ? conf.net : pickedTrip.net,
+      tripName: conf ? conf.title : pickedTrip.name + ' · ' + pickedTrip.meta.split(' · ')[0],
+      tripRef: conf ? conf.sub : 'Arbitrip · ' + pickedTrip.meta.split(' · ')[1] + ' · ref ' + pickedTrip.ref,
+      tripGross: conf ? conf.gross : pickedTrip.gross,
+      tripBack: conf ? conf.back : pickedTrip.back,
+      tripUsed: conf ? conf.used : '−$47.20',
+      tripNote: conf ? conf.note : '6% funded by Arbitrip, credited once the trip is paid in full.',
+      tripEyebrow: conf ? conf.eyebrow : 'Booking confirmed',
+      tripAddedTitle: conf ? conf.addedTitle : 'Trip added to your wallet',
+      tripAddedMeta: conf ? conf.addedMeta : 'Vouchers & credit · booking reference and hotel details',
+      tripBackLabel: conf ? 'New cashback from this purchase' : 'New cashback from this trip',
+      tripHeaderBg: conf ? conf.header : '#6D5BF7',
+      tripTotalLabel: conf ? conf.totalLabel : 'Package total',
+      rdA: rd === 'A', rdB: rd === 'B', rdC: rd === 'C',
+      partners: partnerDefs, partnerHeading: pickedPartner.heading,
+      coversBg: '#191519',
+      coversIcon: pickedPartner.icon,
+      partnerOffers: pickedPartner.offers.map((o, i) => Object.assign({}, o, {
+        ink: pickedPartner.ink,
+        go: () => this.setState({ screen:'booked', offer2: Object.assign({}, o, { p: pickedPartner, ref: pickedPartner.code + '-9' + (410 + i * 7) }) }),
+      })),
+      coversLine: pickedPartner.covers,
+      amounts: amountDefs, applyLabel: '−' + fmt(applyAmt) + ' of $47.20',
+      destinations: destDefs,
+      isCashback: s.screen === 'cashback',
+      cashbackSub: '2% from ' + brandWord + ' plus partner rates, credited at checkout.',
+      isBooked: s.screen === 'booked',
+      goBooked: this.go('booked'),
+      goCashback: () => this.setState({ screen:'cashback', offer2:null }),
+      searchOpen: !!s.search,
+      openSearch: () => this.setState({ search:true }),
+      closeSearch: () => this.setState({ search:false, q:'' }),
+      searchQuery: s.q || '',
+      onSearch: (e) => this.setState({ q: e.target.value }),
+      searchRef: (el) => { if (el) setTimeout(() => el.focus(), 60); },
+      searchHeading: (s.q || '').trim() ? 'Results' : 'Popular near you',
+      searchResults: searchHits,
+      searchEmpty: searchHits.length === 0,
+      menuOpen: !!s.menu,
+      openMenu: () => this.setState({ menu:true }),
+      closeMenu: () => this.setState({ menu:false }),
+      menuTx: [
+        { name:'Starbucks', time:'Today · 8:42 AM', amount:'-$6.40', back:'+$0.32 back', mark:'SB', color:'#1E6B4F' },
+        { name:'Bolt', time:'Today · 7:15 AM', amount:'-$14.20', back:'+$0.43 back', mark:'BL', color:C.ink },
+        { name:"McDonald's", time:'Yesterday · 11:48 AM', amount:'-$4.80', back:'+$0.38 back', mark:'MC', color:C.red },
+      ].map((t, i, arr) => Object.assign({}, t, { bd: i === arr.length - 1 ? 'none' : '1px solid #F1F0F5' })),
+      menuLinks: [
+        { name:'Cards', desc:'8 cards in this wallet', icon: this.ic('card'), go: this.go('home', { menu:false }) },
+        { name:'Card management', desc:'Default card, limits, freeze and remove', icon: this.ic('list'), go: this.go('home', { menu:false }) },
+        { name:'Vouchers & credit', desc:'6 active · 2 expiring', icon: this.ic('ticket'), go: this.go('vouchers', { menu:false }) },
+      ],
+
+      statValue: this.stats[s.statIdx].value,
+      statLabel: this.stats[s.statIdx].label,
+      statOpacity: s.statOn === false ? 0 : 1,
+      statShift: s.statOn === false ? 'translate3d(0,5px,0)' : 'none',
+      issueIcon: this.ic('cardPlus'),
+      statIconCoins: this.ic('coins'),
+      statIcon: this.stats[s.statIdx].icon,
+      statColor: this.stats[s.statIdx].color,
+      goActivity: this.go('activity', { menu:false }),
+      goAdd2: null,
+      goHome: this.go('home'), goMarket: this.go('market'), goVouchers: this.go('vouchers'),
+      goAdd: this.go('add', { menu:false }), goOffer: () => this.setState({ offer:true }), goRedeem: this.go('redeem', { back: s.screen, offer:false }),
+      goBack: this.go(s.back || 'home'),
+
+      homeTabs: [
+        { key:'suggested', label:'Suggested for me' },
+        { key:'around', label:'Around me now' },
+      ].map(t => ({
+        label: t.label,
+        bg: hTab === t.key ? '#FFFFFF' : 'transparent',
+        fg: hTab === t.key ? '#19151A' : '#5B5B5D',
+        sh: hTab === t.key ? '0 1px 3px rgba(25,21,26,.14)' : 'none',
+        pick: () => this.setState({ htab: t.key }),
+      })),
+      homeTitle: hTab === 'around' ? 'Around you now' : 'Suggested for you',
+      homeList: hTab === 'around' ? withOpen([BRANDS[0], BRANDS[1]]) : [baseCashback].concat(withOpen([BRANDS.filter(x => x.id === 'uber')[0]])),
+      homeFeed: hTab === 'around' ? withOpen([BRANDS[0], BRANDS[1]]) : [baseCashback].concat(withOpen([BRANDS.filter(x => x.id === 'uber')[0]])),
+      myApps: [
+        { id:'mixue', icon: this.ic('burger'), color:'#CC2B42', tint:'#FBE9EC' },
+        { id:'uber', icon: this.ic('car'), color:'#19151A', tint:'#EDECEF' },
+        { id:'groupon', icon: this.ic('ticket'), color:'#4E8A1E', tint:'#EDF3E7' },
+        { id:'zara', icon: this.ic('store'), color:'#19151A', tint:'#EDECEF' },
+        { id:'nike', icon: this.ic('shoe'), color:'#19151A', tint:'#EDECEF' },
+        { id:'booking', icon: this.ic('plane'), color:'#3F34A8', tint:'#EAE9F5' },
+        { id:'balenciaga', icon: this.ic('store'), color:'#19151A', tint:'#EDECEF' },
+        { id:'eataly', icon: this.ic('cup'), color:'#1E6B4F', tint:'#E7F0EC' },
+      ].map(a => {
+        const br = BRANDS.filter(x => x.id === a.id)[0];
+        return { name: br.cat === 'Food & drink' ? "McDonald's" : br.name.split(' ')[0], icon:a.icon, color:a.color, tint:a.tint, open: this.openBrand(br) };
+      }),
+      nearby: withOpen([BRANDS[0], BRANDS[1], BRANDS[6]]),
+      feedTop: withOpen([BRANDS[6], BRANDS[4]]),
+      feed: withOpen(filtered.slice(0, 4)),
+      results: withOpen(filtered),
+      resultCount: filtered.length,
+      denseCards: [
+        { name:'Nayax credit card', meta:'•••• 0678 · default', value:'$47.20', mark:'NX', color:C.ink, open: this.go('activity') },
+        { name:'Delta SkyMiles', meta:'Loyalty · 2X points', value:'12,480', mark:'DL', color:C.blue, open: this.go('activity') },
+        { name:'Metro transit pass', meta:'Monthly · renews Aug 12', value:'Active', mark:'MT', color:C.green, open: this.go('activity') },
+        { name:'Zara store credit', meta:'No expiry', value:'$25.00', mark:'ZR', color:C.slate, open: this.go('vouchers') },
+        { name:'Vouchers', meta:'6 active · 2 expiring', value:'6', mark:'VC', color:C.purple, open: this.go('vouchers') },
+      ],
+      showMarketBanner: false,
+      marketBannerIcon: hTab === 'around' ? this.ic('pin') : this.ic('coins'),
+      marketBannerTitle: hTab === 'around' ? 'Riverside Mall · Level 2' : 'Based on where you spend',
+      marketBannerMeta: hTab === 'around' ? '11 partner brands within 300 m' : 'Top cashback rates for your habits',
+      marketGroups: hTab === 'around' ? [
+        group('At this terminal', ['mixue','eataly','balenciaga']),
+        group('Within 300 m', ['starbucks','zara','groupon','inkind']),
+        group('In this city', ['uber','booking']),
+      ] : [
+        group('Highest cashback for you', ['inkind','groupon','zara']),
+        group('Because you fly Delta', ['booking','uber']),
+        group('New partners this week', ['mindbody','starbucks']),
+      ],
+      chips, query: s.chip === 'All' ? 'cashback near me' : s.chip.toLowerCase(),
+      clearQuery: () => this.setState({ chip:'All' }),
+      marketTitle: mode === 'A' ? (hTab === 'around' ? 'Around me now' : 'Suggested for me') : mode === 'B' ? 'Discover' : 'Search',
+      marketSub: mode === 'A'
+        ? 'Partner brands are ranked by how close you are. Rates are what Nayax pays back on your card.'
+        : mode === 'B'
+          ? 'Mini-apps run inside the wallet. Nothing to download, nothing to sign up for.'
+          : 'One field for brands, amounts and cards. Results are ranked by cashback rate.',
+
+      brandName:b.name, brandMark:b.mark, brandColor:b.color, brandCat:b.cat, brandRate:b.rate,
+      brandPerks: b.perks.map((t, i) => ({ text:t, bd: i === b.perks.length - 1 ? 'none' : '1px solid #F1F0F5' })),
+      redeemTitle: (s.back === 'vouchers') ? 'Voucher ready' : b.name,
+
+      voucherTabs: [
+        { label:'Discounts', fg: vTab === 'discount' ? '#19151A' : '#5B5B5D', chipBg: vTab === 'discount' ? '#FFFFFF' : 'transparent', sh: vTab === 'discount' ? '0 1px 3px rgba(25,21,26,.14)' : 'none', pick: () => this.setState({ vtab:'discount' }) },
+        { label:'Store credit', fg: vTab === 'credit' ? '#19151A' : '#5B5B5D', chipBg: vTab === 'credit' ? '#FFFFFF' : 'transparent', sh: vTab === 'credit' ? '0 1px 3px rgba(25,21,26,.14)' : 'none', pick: () => this.setState({ vtab:'credit' }) },
+      ],
+      voucherHint: vTab === 'discount' ? 'Applied automatically at the terminal — nothing to show or type.' : 'Refunds and returns land here as spendable credit.',
+      vouchers: vList,
+
+      addTypes: [
+        { name:'Payment card', desc:'Pay anywhere Nayax Pay is accepted', icon: this.ic('card'), open: this.go('add') },
+        { name:'Transit card', desc:'Get around the city with your phone', icon: this.ic('pin'), open: this.go('add') },
+        { name:'Loyalty card', desc:'Earn points and rewards, and spend them', icon: this.ic('star'), open: this.go('add') },
+        { name:'Gift card', desc:'Buy and pay with a gift card balance', icon: this.ic('ticket'), open: this.go('add') },
+        { name:'Everything else', desc:'Photograph any card — event ticket, gym membership or insurance card', icon: this.ic('camera'), open: this.go('add') },
+      ],
+      txGroups: [
+        { label:'Today', items:[
+          { name:'Starbucks', time:'8:42 AM', amount:'-$6.40', back:'+$0.32 back', mark:'SB', color:'#1E6B4F' },
+          { name:'Bolt', time:'7:15 AM', amount:'-$14.20', back:'+$0.43 back', mark:'BL', color:C.ink },
+        ]},
+        { label:'Yesterday', items:[
+          { name:'Delta Air Lines', time:'5:05 PM', amount:'-$412.00', back:'+$8.24 back', mark:'DL', color:C.blue },
+          { name:"McDonald's", time:'11:48 AM', amount:'-$4.80', back:'+$0.38 back', mark:'MC', color:C.red },
+        ]},
+        { label:'Last week', items:[
+          { name:'Marriott Hotels', time:'3:32 PM', amount:'-$189.00', back:'+$5.67 back', mark:'MH', color:C.deep },
+        ]},
+      ],
+      tabs: tabDefs.map(t => ({
+        label:t.label, icon:t.icon,
+        fg: s.screen === t.screen ? '#19151A' : '#A8A8A8',
+        go: this.go(t.screen),
+      })),
+    };
+  }
+}
+</script>
+</body>
+</html>

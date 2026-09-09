@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/nayax-design-system-9617e10b-b9ff-45d0-8713-62d318040e41/colors_and_type.css">
+  <link rel="stylesheet" href="_ds/nayax-design-system-9617e10b-b9ff-45d0-8713-62d318040e41/components/fig-tokens.css">
+  <link rel="stylesheet" href="_ds/nayax-design-system-9617e10b-b9ff-45d0-8713-62d318040e41/components/fig-typography.css">
+  <script src="_ds/nayax-design-system-9617e10b-b9ff-45d0-8713-62d318040e41/_ds_bundle.js"></script>
+  <style>
+    :root {
+      --type-display: 108px; --type-title: 66px; --type-subtitle: 44px;
+      --type-body: 34px; --type-small: 27px; --type-eyebrow: 24px;
+      --pad-x: 110px; --pad-top: 100px; --pad-bottom: 84px;
+      --gap-title: 50px; --gap-item: 30px;
+    }
+  </style>
+</helmet>
+
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+
+  <section data-label="Title" data-screen-label="01" data-speaker-notes="One sentence: a wallet that pays you back. Everything after this slide explains why only Nayax can build it." style="background:#19151A;font-family:var(--font-sans);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);gap:var(--gap-title)">
+    <div style="display:flex;align-items:center;gap:18px">
+      <div style="width:34px;height:34px;border-radius:9px;background:#FFCD00"></div>
+      <div style="font-size:var(--type-eyebrow);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#A8A8A8">Nayax Wallet</div>
+    </div>
+    <div style="font-size:var(--type-display);line-height:1.04;font-weight:700;letter-spacing:-0.035em;max-width:1450px">A wallet that <span style="color:#FFCD00">pays you back</span></div>
+    <div style="font-size:var(--type-subtitle);line-height:1.35;font-weight:300;color:#D6D4DA;max-width:1250px">A payment card and a loyalty card in one — every voucher and partner app in the same place, with cashback funded by the brands you already buy from.</div>
+  </section>
+
+  <section data-label="The gap" data-screen-label="02" data-speaker-notes="Do not attack Apple and Google. State the structural fact: they do not own a merchant network, so they cannot fund a benefit." style="background:#F7F7F7;font-family:var(--font-sans);color:#19151A;display:flex;flex-direction:column;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);gap:var(--gap-title)">
+    <div style="font-size:var(--type-eyebrow);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#737373">The gap</div>
+    <div style="font-size:var(--type-title);line-height:1.14;font-weight:700;letter-spacing:-0.025em;max-width:1400px">Existing wallets store cards. They cannot put money back in your pocket.</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:14px">
+      <div style="background:#fff;border-radius:26px;padding:52px 54px;display:flex;flex-direction:column;gap:22px">
+        <div style="font-size:var(--type-subtitle);font-weight:700;letter-spacing:-0.02em">Apple &amp; Google Wallet</div>
+        <div style="font-size:var(--type-body);line-height:1.42;color:#5B5B5D">Hold the card. No merchant relationships, so no funded benefit to pass on.</div>
+      </div>
+      <div style="background:#19151A;border-radius:26px;padding:52px 54px;display:flex;flex-direction:column;gap:22px">
+        <div style="font-size:var(--type-subtitle);font-weight:700;letter-spacing:-0.02em;color:#FFCD00">Nayax</div>
+        <div style="font-size:var(--type-body);line-height:1.42;color:#D6D4DA">Owns the terminals and the commercial relationships behind them.</div>
+      </div>
+    </div>
+  </section>
+
+  <section data-label="Pillar 1" data-screen-label="03" data-speaker-notes="Lead with the number. Real money, credited at checkout — no points arithmetic, no expiry games." style="background:#fff;font-family:var(--font-sans);color:#19151A;display:flex;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);gap:80px;align-items:center">
+    <div style="flex:1;display:flex;flex-direction:column;gap:var(--gap-item)">
+      <div style="font-size:var(--type-eyebrow);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#737373">Value 01</div>
+      <div style="font-size:var(--type-title);line-height:1.12;font-weight:700;letter-spacing:-0.025em">Cashback that is real money, not points</div>
+      <div style="font-size:var(--type-body);line-height:1.45;color:#5B5B5D;max-width:720px">Nayax funds a guaranteed 2% on every payment. Partners add their own rate on top. Both land in the card balance at checkout — no conversion tables, no expiry games, no minimum redemption.</div>
+    </div>
+    <div style="flex:0 0 620px;background:#19151A;border-radius:30px;padding:60px 58px;display:flex;flex-direction:column;gap:34px">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:96px;line-height:1;font-weight:700;letter-spacing:-0.04em;color:#fff">2%</div>
+        <div style="font-size:var(--type-small);line-height:1.4;color:#A8A8A8">from Nayax, on everything</div>
+      </div>
+      <div style="height:2px;background:#3A3740"></div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:96px;line-height:1;font-weight:700;letter-spacing:-0.04em;color:#FFCD00">+ X%</div>
+        <div style="font-size:var(--type-small);line-height:1.4;color:#A8A8A8">from the partner brand, on top</div>
+      </div>
+    </div>
+  </section>
+
+  <section data-label="Pillar 2" data-screen-label="04" data-speaker-notes="Mini-apps: the brand runs inside the wallet. No install, no signup, no card data shared." style="background:#F7F7F7;font-family:var(--font-sans);color:#19151A;display:flex;flex-direction:column;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);gap:var(--gap-title)">
+    <div style="display:flex;flex-direction:column;gap:var(--gap-item)">
+      <div style="font-size:var(--type-eyebrow);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#737373">Value 02</div>
+      <div style="font-size:var(--type-title);line-height:1.12;font-weight:700;letter-spacing:-0.025em">Mini-apps, not another app to install</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px">
+      <div style="background:#fff;border-radius:26px;padding:48px 46px;display:flex;flex-direction:column;gap:18px">
+        <div style="font-size:var(--type-subtitle);font-weight:700;letter-spacing:-0.02em">Nothing to download</div>
+        <div style="font-size:var(--type-small);line-height:1.45;color:#5B5B5D">Brands run inside the wallet — order ahead, buy dining credit, book a stay.</div>
+      </div>
+      <div style="background:#fff;border-radius:26px;padding:48px 46px;display:flex;flex-direction:column;gap:18px">
+        <div style="font-size:var(--type-subtitle);font-weight:700;letter-spacing:-0.02em">No account to create</div>
+        <div style="font-size:var(--type-small);line-height:1.45;color:#5B5B5D">Identity and payment come from the wallet, so there is no signup wall.</div>
+      </div>
+      <div style="background:#fff;border-radius:26px;padding:48px 46px;display:flex;flex-direction:column;gap:18px">
+        <div style="font-size:var(--type-subtitle);font-weight:700;letter-spacing:-0.02em">No card data shared</div>
+        <div style="font-size:var(--type-small);line-height:1.45;color:#5B5B5D">Nayax settles with the brand directly. The brand never sees the card.</div>
+      </div>
+    </div>
+  </section>
+
+  <section data-label="Pillar 3" data-screen-label="05" data-speaker-notes="Because payment happens on our terminals, we can tell someone an offer exists at this register — and apply it without a code." style="background:#fff;font-family:var(--font-sans);color:#19151A;display:flex;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);gap:80px;align-items:center">
+    <div style="flex:1;display:flex;flex-direction:column;gap:var(--gap-item)">
+      <div style="font-size:var(--type-eyebrow);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#737373">Value 03</div>
+      <div style="font-size:var(--type-title);line-height:1.12;font-weight:700;letter-spacing:-0.025em">Offers that find you</div>
+      <div style="font-size:var(--type-body);line-height:1.45;color:#5B5B5D;max-width:720px">The wallet can tell you an offer exists at this register, before you pay — and apply it automatically instead of making you show a code.</div>
+    </div>
+    <div style="flex:0 0 620px;background:#F7F7F7;border-radius:30px;padding:56px 54px;display:flex;flex-direction:column;gap:26px">
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="width:14px;height:14px;border-radius:999px;background:#1EA472"></div>
+        <div style="font-size:var(--type-small);font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#737373">Detected at register 02</div>
+      </div>
+      <div style="font-size:56px;line-height:1.14;font-weight:700;letter-spacing:-0.03em">2 free toppings<br>+ 8% back</div>
+      <div style="font-size:var(--type-small);line-height:1.45;color:#5B5B5D">Applied automatically when the payment settles.</div>
+    </div>
+  </section>
+
+  <section data-label="Audience" data-screen-label="06" data-speaker-notes="Not a niche wallet. Anywhere Nayax terminals or partner brands reach — and that is every kind of retail, in every market we operate in." style="background:#19151A;font-family:var(--font-sans);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);gap:var(--gap-title)">
+    <div style="font-size:var(--type-eyebrow);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#A8A8A8">Who it is for</div>
+    <div style="font-size:var(--type-title);line-height:1.14;font-weight:700;letter-spacing:-0.025em;max-width:1450px">Every industry, in every market Nayax operates in</div>
+    <div style="font-size:var(--type-body);line-height:1.45;color:#D6D4DA;max-width:1200px">Wherever a Nayax terminal or a partner brand reaches — retail, hospitality, transport, fuel, leisure, unattended. The wallet is not tied to a vertical, because the network is not.</div>
+  </section>
+
+  <section data-label="Proof point" data-screen-label="07" data-speaker-notes="Close on the claim. No other wallet can say this, because no other wallet is also the merchant network." style="background:#FFCD00;font-family:var(--font-sans);color:#19151A;display:flex;flex-direction:column;justify-content:center;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);gap:var(--gap-title)">
+    <div style="font-size:var(--type-eyebrow);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(25,21,26,.6)">The claim to lead with</div>
+    <div style="font-size:96px;line-height:1.1;font-weight:700;letter-spacing:-0.035em;max-width:1480px">“Your wallet earned you $126 this year.”</div>
+    <div style="font-size:var(--type-body);line-height:1.45;max-width:1150px;color:rgba(25,21,26,.78)">No other wallet can make that claim, because no other wallet is also the merchant network.</div>
+  </section>
+
+</x-import>
+
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="design_doc_mode" content="canvas">
+  <link rel="stylesheet" href="_ds/nayax-design-system-9617e10b-b9ff-45d0-8713-62d318040e41/colors_and_type.css">
+  <link rel="stylesheet" href="_ds/nayax-design-system-9617e10b-b9ff-45d0-8713-62d318040e41/components/fig-tokens.css">
+  <link rel="stylesheet" href="_ds/nayax-design-system-9617e10b-b9ff-45d0-8713-62d318040e41/components/fig-typography.css">
+  <script src="_ds/nayax-design-system-9617e10b-b9ff-45d0-8713-62d318040e41/_ds_bundle.js"></script>
+  <style>
+    body { background: #EFEEF4; margin: 0; }
+    a { color: #5F4BF5; text-decoration: none; font-weight: 600; }
+    a:hover { text-decoration: underline; }
+  </style>
+  <meta name="ext-resource-dependency" content="./WalletPhone.dc.html" data-resource-id="walletPhone" />
+  <meta name="ext-resource-dependency" content="./android-frame.jsx" data-resource-id="androidFrame" />
+  <meta name="ext-resource-dependency" content="uploads/NayaxCC-86c62684.png" data-resource-id="nayaxCard" />
+  <meta name="ext-resource-dependency" content="uploads/businessCC.png" data-resource-id="businessCard" />
+  <template id="__bundler_thumbnail" data-bg-color="#EFEEF4">
+    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+      <rect width="1200" height="800" fill="#EFEEF4"/>
+      <rect x="300" y="330" width="600" height="200" rx="30" fill="#F2E600"/>
+      <rect x="270" y="270" width="600" height="330" rx="32" fill="#19151A"/>
+      <circle cx="742" cy="470" r="40" fill="none" stroke="#8A8A8A" stroke-width="9"/>
+      <circle cx="800" cy="470" r="40" fill="none" stroke="#8A8A8A" stroke-width="9"/>
+      <rect x="330" y="330" width="170" height="18" rx="9" fill="#FFFFFF"/>
+      <rect x="330" y="374" width="96" height="12" rx="6" fill="#FFCD00"/>
+    </svg>
+  </template>
+</helmet>
+
+<section style="padding:56px 56px 80px;display:flex;flex-direction:column;gap:36px;font-family:var(--font-sans);color:#19151A">
+
+  <div style="display:flex;flex-direction:column;gap:14px;max-width:900px">
+    <div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5B5B5D">Turn 1 · Nayax Wallet — app marketplace</div>
+    <div style="font-size:40px;line-height:46px;font-weight:700;letter-spacing:-0.02em">Proximity-first wallet</div>
+    <div style="font-size:16px;line-height:24px;color:#404040;max-width:720px;text-wrap:pretty">Same redesigned wallet underneath — one coherent flow across home, discovery, mini-app detail, the proximity offer, vouchers, add-to-wallet, activity and redemption. Tappable: switch the Suggested / Around me tabs, open a mini-app, tap ⋮ for transactions and cards, or + to add to wallet.</div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;padding-top:4px">
+      <div style="background:#19151A;color:#fff;font-size:12px;font-weight:600;padding:7px 13px;border-radius:999px">Cashback is the spine, not a badge</div>
+      <div style="background:#fff;color:#19151A;font-size:12px;font-weight:600;padding:7px 13px;border-radius:999px">Mini-apps, no downloads</div>
+      <div style="background:#fff;color:#19151A;font-size:12px;font-weight:600;padding:7px 13px;border-radius:999px">Offers explain why they appeared</div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start">
+
+    <div id="1a" style="display:flex;flex-direction:column;gap:16px;width:460px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="background:#19151A;color:#FFCD00;font-size:13px;font-weight:700;padding:5px 11px;border-radius:999px">1a</div>
+        <div style="font-size:20px;font-weight:700;letter-spacing:-0.01em">Proximity-first</div>
+      </div>
+      <div style="font-size:14px;line-height:21px;color:#404040;min-height:84px;text-wrap:pretty"><b>Discovery mechanic:</b> where you are. The wallet opens on partner brands ranked by distance, and Discover is a single list grouped “at this terminal / within 300 m / in this city”.<br><b>Nav:</b> floating + for add-to-wallet, ⋮ for transactions and card management.<br><b>Density:</b> medium — one row per brand, rate always visible.<br><b>Best when</b> the Nayax terminal estate is the moat: nothing else can rank a marketplace by the machine you are standing at.</div>
+      <x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" width="390" height="844" hint-size="390px,844px">
+        <dc-import name="WalletPhone" mode="A" style="height:100%" hint-size="100%,844px"></dc-import>
+      </x-import>
+    </div>
+
+  </div>
+
+  <div style="background:#fff;border-radius:22px;padding:26px 28px;display:flex;flex-direction:column;gap:14px;max-width:900px;box-shadow:0 2px 4px rgba(0,0,0,.04)">
+    <div style="font-size:18px;font-weight:700;letter-spacing:-0.01em">What changed from the mockup</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px 28px">
+      <div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:14px;font-weight:700">Cashback became the product</div><div style="font-size:13px;line-height:19px;color:#5B5B5D">The mockup treated rewards as two small stat cards. Here the balance is the first thing on screen and every brand carries a rate, because partner-funded cashback is the thing Apple and Google Wallet cannot do.</div></div>
+      <div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:14px;font-weight:700">“Your Apps” became mini-apps</div><div style="font-size:13px;line-height:19px;color:#5B5B5D">An icon grid that sends people to the App Store is a dead end. Brands now open in-wallet with a rate, a perk list and one action — no download, no account.</div></div>
+      <div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:14px;font-weight:700">The offer explains itself</div><div style="font-size:13px;line-height:19px;color:#5B5B5D">No Face ID theatre. The takeover says which terminal detected you, what you get, and that it applies automatically at payment — plus a per-brand mute.</div></div>
+      <div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:14px;font-weight:700">Vouchers stopped being a wall</div><div style="font-size:13px;line-height:19px;color:#5B5B5D">Split into discounts and store credit, expiry surfaced as a chip, and the promise stated once: most apply at the terminal automatically instead of being shown.</div></div>
+    </div>
+  </div>
+
+</section>
+
+</x-dc>
+</body>
+</html>

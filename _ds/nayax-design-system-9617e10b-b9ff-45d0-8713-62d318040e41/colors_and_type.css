@@ -1,0 +1,262 @@
+/* Nayax Design System — Colors & Type tokens
+   Derived from the eShop Design System Figma file.
+   Primary type: Hurme Geometric Sans 3 (licensed, provided by the user). */
+
+@font-face {
+  font-family: 'Hurme Geometric Sans 3';
+  src: url('fonts/Hurme_-_HurmeGeometricSans3_Thin.otf') format('opentype');
+  font-weight: 100; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Hurme Geometric Sans 3';
+  src: url('fonts/Hurme_-_HurmeGeometricSans3_Hairline.otf') format('opentype');
+  font-weight: 200; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Hurme Geometric Sans 3';
+  src: url('fonts/Hurme_-_HurmeGeometricSans3_Light.otf') format('opentype');
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Hurme Geometric Sans 3';
+  src: url('fonts/Hurme_-_HurmeGeometricSans3_Regular.otf') format('opentype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Hurme Geometric Sans 3';
+  src: url('fonts/Hurme_-_HurmeGeometricSans3_SemiBold.otf') format('opentype');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Hurme Geometric Sans 3';
+  src: url('fonts/Hurme_-_HurmeGeometricSans3_Bold.otf') format('opentype');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Hurme Geometric Sans 3';
+  src: url('fonts/Hurme_-_HurmeGeometricSans3_Black.otf') format('opentype');
+  font-weight: 900; font-style: normal; font-display: swap;
+}
+/* Obliques */
+@font-face {
+  font-family: 'Hurme Geometric Sans 3';
+  src: url('fonts/Hurme_-_HurmeGeometricSans3_RegularObl.otf') format('opentype');
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Hurme Geometric Sans 3';
+  src: url('fonts/Hurme_-_HurmeGeometricSans3_SemiBoldObl.otf') format('opentype');
+  font-weight: 600; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Hurme Geometric Sans 3';
+  src: url('fonts/Hurme_-_HurmeGeometricSans3_BoldObl.otf') format('opentype');
+  font-weight: 700; font-style: italic; font-display: swap;
+}
+
+/* Monospace — used by --font-mono for numeric callouts & code.
+   Served from the Fontsource CDN until a local copy is uploaded. */
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('https://cdn.jsdelivr.net/fontsource/fonts/jetbrains-mono@latest/latin-400-normal.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+
+
+:root {
+  /* ───────── Core palette ─────────
+     9-step ramps (00 darkest → 90 lightest) */
+
+  /* Purple — primary accent family */
+  --purple-00: #1A0033;
+  --purple-10: #2A2461;
+  --purple-20: #3F34A8;
+  --purple-30: #5F4BF5;
+  --purple-40: #8A38F5;
+  --purple-50: #6D5BF7;   /* signature purple */
+  --purple-60: #9747FF;
+  --purple-70: #B794FF;
+  --purple-80: #E2DEFD;
+  --purple-90: #F0EFFE;
+
+  /* Yellow — secondary accent (logo mark, highlights) */
+  --yellow-00: #8A6E00;
+  --yellow-10: #B08900;
+  --yellow-20: #D4A400;
+  --yellow-30: #FFCD00;   /* signature yellow */
+  --yellow-40: #FFE500;
+  --yellow-50: #FFFB00;
+  --yellow-60: #FFFD66;
+  --yellow-70: #FFFE9C;
+  --yellow-80: #FFFEB2;
+  --yellow-90: #FFFFE5;
+
+  /* Neutrals — 10 = near-black text, 90 = white */
+  --neutral-00: #000000;
+  --neutral-10: #0D0D0D;
+  --neutral-15: #19151A;
+  --neutral-20: #262626;
+  --neutral-30: #404040;
+  --neutral-35: #4E4E50;
+  --neutral-40: #5B5B5D;
+  --neutral-45: #625B68;
+  --neutral-50: #737373;
+  --neutral-60: #A8A8A8;
+  --neutral-70: #D9D9D9;
+  --neutral-75: #E0E0E0;
+  --neutral-80: #F7F7F7;
+  --neutral-85: #F6F5FD;
+  --neutral-90: #FFFFFF;
+
+  /* Reds — error */
+  --red-30: #CC2B42;
+  --red-50: #FF5C6C;
+
+  /* Greens — success (approx; see README) */
+  --green-50: #1EA472;
+
+  /* ───────── Semantic tokens ───────── */
+
+  /* Action (buttons, primary CTAs) */
+  --action-primary-default: var(--neutral-20);
+  --action-primary-hover:   var(--neutral-10);
+  --action-primary-focused: var(--neutral-10);
+  --action-inverted-default: var(--yellow-50);
+  --action-inverted-hover:   var(--yellow-40);
+  --action-inverted-focused: var(--yellow-30);
+
+  /* Background */
+  --bg-default:  var(--neutral-90);
+  --bg-subdued:  var(--neutral-80);
+  --bg-inverted: var(--neutral-20);
+  --bg-accent-soft: var(--purple-90);
+
+  /* Divider */
+  --divider-default: var(--neutral-75);
+  --divider-subdued: var(--neutral-60);
+
+  /* Icon */
+  --icon-base-default:   var(--neutral-15);
+  --icon-base-subdued:   var(--neutral-45);
+  --icon-base-highlight: #30004F; /* deep violet used for icon accents */
+  --icon-inverted-default: var(--neutral-90);
+
+  /* Stroke / borders */
+  --stroke-base-default: var(--neutral-75);
+  --stroke-base-focused: var(--purple-50);
+  --stroke-base-active:  var(--neutral-20);
+  --stroke-inverted-default: var(--neutral-15);
+  --stroke-error-default: var(--red-30);
+
+  /* Surface */
+  --surface-base-default: var(--neutral-90);
+  --surface-base-subdued: var(--neutral-85);
+  --surface-inverted-default: var(--neutral-20);
+  --surface-highlight-lighter: var(--purple-90);
+  --surface-highlight-darker:  var(--purple-80);
+  --surface-highlight-accent:  var(--purple-50);
+  --surface-promo-yellow: var(--yellow-80);
+  --surface-promo-soft:   #FFFEB2;
+
+  /* Text */
+  --text-base-default:   var(--neutral-15);
+  --text-base-subdued:   var(--neutral-40);
+  --text-base-highlight: var(--purple-10);
+  --text-inverted-default: var(--neutral-90);
+  --text-inverted-subdued: var(--neutral-70);
+  --text-error: var(--red-30);
+  --text-link:  var(--purple-30);
+
+  /* Shadows — from design spec */
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.02);
+  --shadow-focus-ring: 0 0 0 3px rgba(109,91,247,0.30);
+
+  /* Radii */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+  --radius-2xl: 24px;
+  --radius-pill: 999px;
+
+  /* Spacing scale (4px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 48px;
+  --space-9: 64px;
+  --space-10: 96px;
+
+  /* ───────── Type ─────────
+     Primary family. Hurme Geometric Sans 3 is the design spec; we
+     fall back to Urbanist (Google Fonts), then system geometrics. */
+  --font-sans: 'Hurme Geometric Sans 3', 'Helvetica Neue',
+               'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Weights in use */
+  --fw-light: 300;      /* @kind font */
+  --fw-regular: 400;    /* @kind font */
+  --fw-medium: 500;     /* @kind font */
+  --fw-semibold: 600;   /* @kind font */
+  --fw-bold: 700;       /* @kind font */
+
+  /* Type scale — from Figma (Display / Headline / Title / Body) */
+  --fs-display-1: 88px;  --lh-display-1: 96px; /* lh actually ~96-190 in figma; we pick 96 */
+  --fs-display-2: 72px;  --lh-display-2: 80px;
+  --fs-display-3: 56px;  --lh-display-3: 64px;
+  --fs-display-4: 48px;  --lh-display-4: 56px;
+
+  --fs-headline-1: 56px; --lh-headline-1: 64px;
+  --fs-headline-2: 44px; --lh-headline-2: 52px;
+  --fs-headline-3: 36px; --lh-headline-3: 44px;
+  --fs-headline-4: 28px; --lh-headline-4: 36px;
+
+  --fs-title-1: 32px; --lh-title-1: 40px;
+  --fs-title-2: 24px; --lh-title-2: 32px;
+  --fs-title-3: 20px; --lh-title-3: 28px;
+  --fs-title-4: 18px; --lh-title-4: 24px;
+  --fs-title-5: 16px; --lh-title-5: 22px;
+
+  --fs-body-1: 18px; --lh-body-1: 26px;
+  --fs-body-2: 16px; --lh-body-2: 24px;
+  --fs-body-3: 15px; --lh-body-3: 22px;
+  --fs-body-4: 14px; --lh-body-4: 20px;
+  --fs-body-5: 13px; --lh-body-5: 18px;
+  --fs-body-6: 11px; --lh-body-6: 16px;
+}
+
+/* ───────── Semantic element styles ───────── */
+html, body {
+  font-family: var(--font-sans);
+  color: var(--text-base-default);
+  background: var(--bg-default);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1, .h1 { font: var(--fw-bold) var(--fs-display-4)/var(--lh-display-4) var(--font-sans); letter-spacing: -0.01em; margin: 0; }
+h2, .h2 { font: var(--fw-bold) var(--fs-headline-3)/var(--lh-headline-3) var(--font-sans); letter-spacing: -0.005em; margin: 0; }
+h3, .h3 { font: var(--fw-bold) var(--fs-title-1)/var(--lh-title-1) var(--font-sans); margin: 0; }
+h4, .h4 { font: var(--fw-semibold) var(--fs-title-2)/var(--lh-title-2) var(--font-sans); margin: 0; }
+h5, .h5 { font: var(--fw-semibold) var(--fs-title-3)/var(--lh-title-3) var(--font-sans); margin: 0; }
+h6, .h6 { font: var(--fw-semibold) var(--fs-title-4)/var(--lh-title-4) var(--font-sans); margin: 0; }
+
+p, .p  { font: var(--fw-regular) var(--fs-body-2)/var(--lh-body-2) var(--font-sans); color: var(--text-base-default); margin: 0; }
+.small { font: var(--fw-regular) var(--fs-body-4)/var(--lh-body-4) var(--font-sans); color: var(--text-base-subdued); }
+.caption { font: var(--fw-regular) var(--fs-body-5)/var(--lh-body-5) var(--font-sans); color: var(--text-base-subdued); }
+.overline { font: var(--fw-semibold) var(--fs-body-6)/var(--lh-body-6) var(--font-sans); text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-base-subdued); }
+
+a { color: var(--text-link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code, pre { font-family: var(--font-mono); font-size: 13px; }
